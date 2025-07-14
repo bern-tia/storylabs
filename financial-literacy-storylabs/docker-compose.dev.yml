@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./backend/images:/app/images
+    env_file:
+      - ./backend/.env
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+    networks:
+      - financial-literacy-network
+    restart: unless-stopped
+
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    env_file:
+      - ./frontend/.env.local
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+    depends_on:
+      - backend
+    networks:
+      - financial-literacy-network
+    restart: unless-stopped
+
+networks:
+  financial-literacy-network:
+    driver: bridge
+
+volumes:
+  node_modules:
+  next_cache: 

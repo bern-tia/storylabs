@@ -1,0 +1,254 @@
+{
+  "age_groups": {
+    "4-6": {
+      "title": "Basic Money Concepts",
+      "description": "Introduction to money and basic financial concepts",
+      "concepts": [
+        {
+          "name": "What is Money?",
+          "description": "Understanding that money is used to buy things we need and want",
+          "keywords": ["money", "coins", "bills", "currency"],
+          "story_scenarios": [
+            "Going to the store with parent",
+            "Receiving allowance",
+            "Counting coins"
+          ],
+          "learning_objectives": [
+            "Recognize different coins and bills",
+            "Understand money is used for purchasing",
+            "Learn basic counting with money"
+          ]
+        },
+        {
+          "name": "Needs vs Wants",
+          "description": "Learning the difference between things we need and things we want",
+          "keywords": ["needs", "wants", "essential", "optional"],
+          "story_scenarios": [
+            "Shopping for groceries vs toys",
+            "Choosing between lunch and candy",
+            "Winter coat vs summer toy"
+          ],
+          "learning_objectives": [
+            "Identify basic needs (food, shelter, clothing)",
+            "Recognize wants (toys, treats, entertainment)",
+            "Understand priority of needs over wants"
+          ]
+        },
+        {
+          "name": "Saving Money",
+          "description": "Basic concept of keeping money safe for future use",
+          "keywords": ["save", "piggy bank", "keep", "later"],
+          "story_scenarios": [
+            "Getting first piggy bank",
+            "Saving birthday money",
+            "Waiting to buy a special toy"
+          ],
+          "learning_objectives": [
+            "Understand saving means keeping money safe",
+            "Learn about piggy banks and saving containers",
+            "Practice putting money away for goals"
+          ]
+        },
+        {
+          "name": "Counting Money",
+          "description": "Basic math skills with coins and simple amounts",
+          "keywords": ["count", "penny", "nickel", "dime", "quarter"],
+          "story_scenarios": [
+            "Counting coins from piggy bank",
+            "Adding up money for purchase",
+            "Sorting different coins"
+          ],
+          "learning_objectives": [
+            "Count coins up to 10",
+            "Recognize coin values",
+            "Simple addition with money"
+          ]
+        }
+      ]
+    },
+    "7-9": {
+      "title": "Money Management",
+      "description": "Learning to manage money through earning, spending, and saving decisions",
+      "concepts": [
+        {
+          "name": "Earning Money",
+          "description": "Understanding that money comes from work and helping others",
+          "keywords": ["earn", "work", "chores", "allowance", "job"],
+          "story_scenarios": [
+            "Doing chores for allowance",
+            "Pet sitting for neighbors",
+            "Helping with family business"
+          ],
+          "learning_objectives": [
+            "Understand work leads to earning money",
+            "Learn about different ways to earn",
+            "Connect effort with reward"
+          ]
+        },
+        {
+          "name": "Smart Spending",
+          "description": "Making thoughtful decisions about purchases",
+          "keywords": ["spend", "buy", "choose", "decision", "smart"],
+          "story_scenarios": [
+            "Comparing toy prices",
+            "Choosing between different items",
+            "Deciding on quality vs quantity"
+          ],
+          "learning_objectives": [
+            "Think before spending",
+            "Compare options and prices",
+            "Make informed purchasing decisions"
+          ]
+        },
+        {
+          "name": "Simple Budgeting",
+          "description": "Planning how to use money for different purposes",
+          "keywords": ["budget", "plan", "allocate", "spend", "save"],
+          "story_scenarios": [
+            "Planning allowance use",
+            "Dividing money for different goals",
+            "Tracking spending and saving"
+          ],
+          "learning_objectives": [
+            "Learn to plan money use",
+            "Understand dividing money for different purposes",
+            "Practice simple budgeting concepts"
+          ]
+        },
+        {
+          "name": "Sharing and Donating",
+          "description": "Understanding generosity and helping others with money",
+          "keywords": ["share", "donate", "charity", "help", "give"],
+          "story_scenarios": [
+            "Donating to animal shelter",
+            "Helping family member in need",
+            "Contributing to school fundraiser"
+          ],
+          "learning_objectives": [
+            "Learn about helping others with money",
+            "Understand charity and donations",
+            "Practice generosity and sharing"
+          ]
+        }
+      ]
+    },
+    "10-12": {
+      "title": "Advanced Financial Concepts",
+      "description": "More complex financial planning and understanding",
+      "concepts": [
+        {
+          "name": "Goal Setting",
+          "description": "Creating specific financial goals and plans to achieve them",
+          "keywords": ["goal", "plan", "target", "timeline", "achievement"],
+          "story_scenarios": [
+            "Saving for a bicycle",
+            "Planning for summer camp",
+            "Setting monthly saving targets"
+          ],
+          "learning_objectives": [
+            "Set specific financial goals",
+            "Create timelines for achieving goals",
+            "Understand planning and patience"
+          ]
+        },
+        {
+          "name": "Comparing Prices",
+          "description": "Understanding value and making smart shopping decisions",
+          "keywords": ["compare", "price", "value", "quality", "deal"],
+          "story_scenarios": [
+            "Shopping for best deal",
+            "Understanding sales and discounts",
+            "Quality vs price decisions"
+          ],
+          "learning_objectives": [
+            "Learn to compare prices",
+            "Understand value and quality",
+            "Make informed shopping decisions"
+          ]
+        },
+        {
+          "name": "Interest and Growth",
+          "description": "Basic understanding of how money can grow over time",
+          "keywords": ["interest", "growth", "savings account", "bank"],
+          "story_scenarios": [
+            "Opening first savings account",
+            "Learning about interest earnings",
+            "Understanding compound growth"
+          ],
+          "learning_objectives": [
+            "Understand money can grow in banks",
+            "Learn basic interest concepts",
+            "Appreciate long-term saving benefits"
+          ]
+        },
+        {
+          "name": "Simple Entrepreneurship",
+          "description": "Understanding how to create value and earn money through business",
+          "keywords": ["business", "sell", "service", "customer", "profit"],
+          "story_scenarios": [
+            "Starting a lemonade stand",
+            "Selling crafts to neighbors",
+            "Providing services like dog walking"
+          ],
+          "learning_objectives": [
+            "Understand basic business concepts",
+            "Learn about providing value to others",
+            "Practice entrepreneurial thinking"
+          ]
+        }
+      ]
+    }
+  },
+  "story_templates": {
+    "saving_adventure": {
+      "title": "The Great Saving Adventure",
+      "applicable_ages": ["4-6", "7-9"],
+      "main_concepts": ["saving", "goal_setting"],
+      "characters": ["Financial Guide", "Penny the Pig", "Child Character"]
+    },
+    "spending_wisdom": {
+      "title": "Smart Spending Choices",
+      "applicable_ages": ["7-9", "10-12"],
+      "main_concepts": ["smart_spending", "comparing_prices"],
+      "characters": ["Financial Guide", "Dollar Bill", "Shop Owner"]
+    },
+    "earning_journey": {
+      "title": "The Earning Journey",
+      "applicable_ages": ["7-9", "10-12"],
+      "main_concepts": ["earning", "work_value"],
+      "characters": ["Financial Guide", "Helpful Helper", "Community Member"]
+    },
+    "business_startup": {
+      "title": "My First Business",
+      "applicable_ages": ["10-12"],
+      "main_concepts": ["entrepreneurship", "customer_service"],
+      "characters": ["Financial Guide", "Business Mentor", "Customer"]
+    }
+  },
+  "interactive_elements": {
+    "choice_types": [
+      "spending_decision",
+      "saving_choice",
+      "earning_opportunity",
+      "sharing_moment",
+      "goal_setting",
+      "price_comparison"
+    ],
+    "engagement_prompts": [
+      "What would you choose to do with your money?",
+      "How much do you think this costs?",
+      "What goal would you like to save for?",
+      "Which option gives you more value?",
+      "How could you earn money to help?",
+      "What would you do in this situation?"
+    ],
+    "positive_reinforcement": [
+      "Great thinking!",
+      "You're learning so much about money!",
+      "That's a smart financial choice!",
+      "You understand money concepts really well!",
+      "Excellent money management!",
+      "You're becoming a money expert!"
+    ]
+  }
+} 
