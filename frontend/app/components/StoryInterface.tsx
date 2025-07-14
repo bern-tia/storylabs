@@ -8,6 +8,13 @@ import { ChevronRight, MessageCircle } from 'lucide-react'
 import { LoadingSpinner } from '@/app/components/LoadingSpinner'
 import ReviewPage from './ReviewPage'
 
+// Enhanced logging function with timestamps
+const log = (level: 'info' | 'warn' | 'error', message: string, data?: any) => {
+  const timestamp = new Date().toISOString();
+  const emoji = level === 'info' ? '📝' : level === 'warn' ? '⚠️' : '❌';
+  console[level](`${emoji} [${timestamp}] [StoryInterface] ${message}`, data ? data : '');
+};
+
 interface StoryEvent {
   type: 'speak' | 'narrate' | 'input';
   character?: string;
@@ -39,6 +46,14 @@ const SpeakingAvatar = () => (
 );
 
 export default function StoryInterface({ userInfo, story, generationError, onStartNewStory }: StoryInterfaceProps) {
+  log('info', 'StoryInterface component mounted', {
+    userInfo,
+    hasStory: !!story,
+    storyTitle: story?.main?.title,
+    scenesCount: story?.scenes?.length || 0,
+    hasError: !!generationError
+  });
+
   const {
     currentScene,
     currentEvent,
@@ -52,22 +67,53 @@ export default function StoryInterface({ userInfo, story, generationError, onSta
   // Add state for showing review
   const [showReview, setShowReview] = useState(false);
 
+  log('info', 'StoryInterface state update', {
+    currentSceneId: currentScene?.id,
+    currentSceneName: currentScene?.name,
+    currentEventType: currentEvent?.type,
+    isPlaying,
+    canProgress,
+    showReview,
+    progress
+  });
+
   // Modify handleNext to show review when story ends
   const handleNextWithReview = async () => {
+    log('info', '⏭️ Next button clicked', {
+      canProgress,
+      isPlaying,
+      currentProgress: progress
+    });
+
     if (!canProgress) {
-      // If we can't progress anymore, show the review page
+      log('info', '🎉 Story completed - showing review page');
       setShowReview(true);
     } else {
+      log('info', '▶️ Progressing to next event/scene');
       await handleNext();
     }
   };
 
   // Only initialize first event once
   useEffect(() => {
-    initializeFirstEvent();
+    log('info', '🚀 useEffect triggered for first event initialization', {
+      hasStory: !!story,
+      currentEventId: currentEvent?.id
+    });
+
+    if (story && currentEvent) {
+      log('info', '🎬 Initializing first event');
+      initializeFirstEvent();
+    }
   }, [initializeFirstEvent]);
 
   const formatContent = (event: StoryEvent) => {
+    log('info', '🎨 Formatting content for display', {
+      eventType: event.type,
+      character: event.character,
+      contentLength: event.content?.length || 0
+    });
+
     if (event.type === 'speak') {
       return (
         <div className="flex items-start">
@@ -84,14 +130,19 @@ export default function StoryInterface({ userInfo, story, generationError, onSta
   };
 
   if (showReview) {
+    log('info', '📋 Rendering review page');
     return <ReviewPage story={story} onStartNewStory={onStartNewStory} />;
   }
 
   if (generationError) {
+    log('error', '💥 Rendering error state', { error: generationError });
     return <div className="text-red-500 text-center p-4">Error: {generationError}</div>;
   }
 
-  if (!story) return null;
+  if (!story) {
+    log('warn', '⚠️ No story provided to StoryInterface');
+    return null;
+  }
 
   return (
     <div className="bg-white p-8 rounded-lg shadow-lg max-w-4xl w-full">
@@ -107,14 +158,21 @@ export default function StoryInterface({ userInfo, story, generationError, onSta
       <div className="relative h-80 mb-6">
         <AnimatePresence mode="wait">
           <motion.img
-            key={currentScene?.imageUrl}
-            src={currentScene?.imageUrl}
-            alt={currentScene?.name}
+            key={currentScene?.id}
+            src={(currentScene as any)?.imageUrl || '/assets/scenes/default.jpg'}
+            alt={currentScene?.name || 'Story scene'}
             className="w-full h-full object-cover rounded-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
+            onError={(e) => {
+              log('warn', 'Image failed to load, using fallback', {
+                sceneId: currentScene?.id,
+                imageUrl: (currentScene as any)?.imageUrl
+              });
+              (e.target as HTMLImageElement).src = '/assets/scenes/default.jpg';
+            }}
           />
         </AnimatePresence>
       </div>

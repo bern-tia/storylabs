@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryLabs - Cerita Literasi Keuangan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #4a90e2;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #357abd;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #4a90e2;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            color: #666;
+        }
+        .status {
+            text-align: center;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏦 StoryLabs Financial Literacy</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Buat cerita edukatif tentang literasi keuangan untuk anak-anak Indonesia
+        </p>
+        
+        <form id="storyForm">
+            <div class="form-group">
+                <label for="name">Nama Anak:</label>
+                <input type="text" id="name" placeholder="Masukkan nama anak" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="age">Umur:</label>
+                <input type="number" id="age" placeholder="Masukkan umur (3-12 tahun)" min="3" max="12" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="interests">Minat/Hobi:</label>
+                <input type="text" id="interests" placeholder="Contoh: bermain sepak bola, menggambar, membaca" required>
+            </div>
+            
+            <button type="submit" id="submitBtn">🎭 Buat Cerita Sekarang!</button>
+        </form>
+        
+        <div class="loading" id="loading">
+            <p>⏳ Sedang membuat cerita... Tunggu sebentar ya!</p>
+        </div>
+        
+        <div id="result"></div>
+    </div>
+    
+    <script>
+        document.getElementById('storyForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const result = document.getElementById('result');
+            
+            // Show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sedang membuat cerita...';
+            loading.style.display = 'block';
+            result.innerHTML = '';
+            
+            const data = {
+                child_name: document.getElementById('name').value,
+                child_age: parseInt(document.getElementById('age').value),
+                child_interests: document.getElementById('interests').value
+            };
+            
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/story/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    const storyData = await response.json();
+                    result.innerHTML = `
+                        <div class="status success">✅ Cerita berhasil dibuat!</div>
+                        <h3>📖 Cerita untuk ${storyData.child_name}:</h3>
+                        ${storyData.story_content}
+                        
+                        <hr style="margin: 20px 0;">
+                        <small style="color: #666;">
+                            ID Cerita: ${storyData.story_id}<br>
+                            Dibuat pada: ${new Date(storyData.created_at).toLocaleString('id-ID')}
+                        </small>
+                    `;
+                } else {
+                    const error = await response.json();
+                    result.innerHTML = `
+                        <div class="status error">❌ Gagal membuat cerita</div>
+                        <p>Error: ${error.detail || 'Unknown error'}</p>
+                    `;
+                }
+                
+            } catch (error) {
+                result.innerHTML = `
+                    <div class="status error">❌ Koneksi error</div>
+                    <p>Pastikan backend sedang berjalan di http://127.0.0.1:8000</p>
+                    <p>Error: ${error.message}</p>
+                `;
+            } finally {
+                // Hide loading
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🎭 Buat Cerita Sekarang!';
+                loading.style.display = 'none';
+            }
+        });
+        
+        // Test backend connection on page load
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/story/health');
+                if (response.ok) {
+                    console.log('✅ Backend connection successful');
+                } else {
+                    console.log('⚠️ Backend responded but with error');
+                }
+            } catch (error) {
+                console.log('❌ Backend connection failed:', error.message);
+            }
+        });
+    </script>
+</body>
+</html>
+    

@@ -1,80 +1,137 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
+import React, { useState } from 'react'
+
+// Enhanced logging function with timestamps
+const log = (level: 'info' | 'warn' | 'error', message: string, data?: any) => {
+  const timestamp = new Date().toISOString();
+  const emoji = level === 'info' ? '📝' : level === 'warn' ? '⚠️' : '❌';
+  console[level](`${emoji} [${timestamp}] [UserInputForm] ${message}`, data ? data : '');
+};
 
 interface UserInputFormProps {
   onSubmit: (userInfo: { name: string; age: string; interests: string }) => void
 }
 
 export default function UserInputForm({ onSubmit }: UserInputFormProps) {
-  const [name, setName] = useState('')
-  const [age, setAge] = useState('')
-  const [interests, setInterests] = useState('')
+  const [formData, setFormData] = useState({
+    name: '',
+    age: '',
+    interests: ''
+  })
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    onSubmit({ name, age, interests })
+    e.preventDefault();
+    
+    log('info', '🚀 Form submission initiated', {
+      formData: {
+        name: formData.name,
+        age: formData.age,
+        interests: formData.interests,
+        nameLength: formData.name.length,
+        interestsLength: formData.interests.length
+      }
+    });
+
+    // Basic validation
+    if (!formData.name.trim() || !formData.age || !formData.interests.trim()) {
+      log('warn', '❌ Form validation failed - missing required fields', {
+        hasName: !!formData.name.trim(),
+        hasAge: !!formData.age,
+        hasInterests: !!formData.interests.trim()
+      });
+      return;
+    }
+
+    const trimmedData = {
+      name: formData.name.trim(),
+      age: formData.age,
+      interests: formData.interests.trim()
+    };
+
+    log('info', '✅ Form validation passed - submitting data', {
+      submittedData: trimmedData
+    });
+
+    onSubmit(trimmedData);
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full"
-    >
-      <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">Tell us about yourself!</h2>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">
+        Buat Cerita Keuangan Untukmu!
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-lg font-medium text-gray-700 mb-2">
-            What's your name?
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+            Siapa namamu?
           </label>
-          <Input
+          <input
+            type="text"
             id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={formData.name}
+            onChange={(e) => {
+              log('info', '📝 Name input changed', { 
+                newValue: e.target.value,
+                valueLength: e.target.value.length 
+              });
+              setFormData({ ...formData, name: e.target.value });
+            }}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             required
-            className="w-full text-lg py-2 px-3 border-2 border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
         </div>
+        
         <div>
-          <label htmlFor="age" className="block text-lg font-medium text-gray-700 mb-2">
-            How old are you?
+          <label htmlFor="age" className="block text-sm font-medium text-gray-700">
+            Berapa umurmu?
           </label>
-          <Input
-            id="age"
+          <input
             type="number"
-            min="3"
-            max="7"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
+            id="age"
+            min="5"
+            max="12"
+            value={formData.age}
+            onChange={(e) => {
+              log('info', '📝 Age input changed', { 
+                newValue: e.target.value,
+                isValidAge: parseInt(e.target.value) >= 5 && parseInt(e.target.value) <= 12
+              });
+              setFormData({ ...formData, age: e.target.value });
+            }}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             required
-            className="w-full text-lg py-2 px-3 border-2 border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
         </div>
+
         <div>
-          <label htmlFor="interests" className="block text-lg font-medium text-gray-700 mb-2">
-            What do you like?
+          <label htmlFor="interests" className="block text-sm font-medium text-gray-700">
+            Apa yang kamu suka? (contoh: bermain game, membaca buku, olahraga)
           </label>
-          <Input
+          <input
+            type="text"
             id="interests"
-            value={interests}
-            onChange={(e) => setInterests(e.target.value)}
+            value={formData.interests}
+            onChange={(e) => {
+              log('info', '📝 Interests input changed', { 
+                newValue: e.target.value,
+                valueLength: e.target.value.length
+              });
+              setFormData({ ...formData, interests: e.target.value });
+            }}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             required
-            className="w-full text-lg py-2 px-3 border-2 border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
         </div>
-        <Button
+
+        <button
           type="submit"
-          className="w-full text-xl py-3 px-4 bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold rounded-full transition-all duration-200 transform hover:scale-105"
+          className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
-          Start My Story!
-        </Button>
+          Buat Cerita!
+        </button>
       </form>
-    </motion.div>
+    </div>
   )
 }
 

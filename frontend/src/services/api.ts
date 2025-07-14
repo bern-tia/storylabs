@@ -3,15 +3,30 @@ export const API_URL = process.env.NODE_ENV === 'production'
   ? 'https://storylabs-api.onrender.com'  // Production URL
   : 'http://localhost:8000';              // Development URL
 
-console.log('Environment:', process.env.NODE_ENV);
-console.log('Using API_URL:', API_URL);
+// Enhanced logging function with timestamps
+const log = (level: 'info' | 'warn' | 'error', message: string, data?: any) => {
+  const timestamp = new Date().toISOString();
+  const emoji = level === 'info' ? '📝' : level === 'warn' ? '⚠️' : '❌';
+  console[level](`${emoji} [${timestamp}] ${message}`, data ? data : '');
+};
+
+log('info', 'API Service initialized', { 
+  environment: process.env.NODE_ENV,
+  apiUrl: API_URL,
+  timestamp: new Date().toISOString()
+});
 
 export const getStoredKeys = () => {
   try {
+    log('info', '🔐 Retrieving stored keys from localStorage');
     const keys = localStorage.getItem('storylabs_keys');
-    if (!keys) return null;
+    if (!keys) {
+      log('warn', 'No stored keys found in localStorage');
+      return null;
+    }
+    
     const parsedKeys = JSON.parse(keys);
-    console.log('Retrieved stored keys:', {
+    log('info', 'Successfully retrieved stored keys', {
       accessCode: parsedKeys.accessCode ? 'Present' : 'Not present',
       openaiKey: parsedKeys.openaiKey ? 'Present' : 'Not present',
       elevenLabsKey: parsedKeys.elevenLabsKey ? 'Present' : 'Not present',
@@ -19,7 +34,7 @@ export const getStoredKeys = () => {
     });
     return parsedKeys;
   } catch (error) {
-    console.error('Error getting stored keys:', error);
+    log('error', 'Error parsing stored keys', error);
     localStorage.removeItem('storylabs_keys');
     return null;
   }
@@ -27,14 +42,34 @@ export const getStoredKeys = () => {
 
 // Add error handling for API key validation
 const validateApiResponse = async (response: Response) => {
+  log('info', `🔍 Validating API response`, {
+    status: response.status,
+    statusText: response.statusText,
+    url: response.url
+  });
+
   if (!response.ok) {
-    const error = await response.json().catch(() => ({ detail: 'Unknown error' }));
+    let errorDetail;
+    try {
+      errorDetail = await response.json();
+      log('error', 'API response validation failed', {
+        status: response.status,
+        statusText: response.statusText,
+        errorDetail
+      });
+    } catch (parseError) {
+      errorDetail = { detail: 'Unknown error - could not parse response' };
+      log('error', 'Failed to parse error response', parseError);
+    }
+
     if (response.status === 403) {
-      // Clear stored keys if authentication fails
+      log('warn', 'Authentication failed - clearing stored keys');
       localStorage.removeItem('storylabs_keys');
     }
-    throw new Error(error.detail || 'Request failed');
+    throw new Error(errorDetail.detail || 'Request failed');
   }
+  
+  log('info', '✅ API response validation passed');
   return response;
 };
 
@@ -43,21 +78,83 @@ export const generateStory = async (userInfo: {
   age: string;
   interests: string;
 }) => {
-  const keys = getStoredKeys();
-  if (!keys) {
-    throw new Error('No credentials found');
-  }
-
-  // Add debug logging
-  console.log('Sending request with headers:', {
-    ...(keys.accessCode && { 'X-Access-Code': keys.accessCode }),
-    ...(keys.openaiKey && { 'X-OpenAI-Key': keys.openaiKey }),
-    ...(keys.elevenLabsKey && { 'X-ElevenLabs-Key': keys.elevenLabsKey }),
-    ...(keys.replicateToken && { 'X-Replicate-Token': keys.replicateToken }),
+  const startTime = Date.now();
+  log('info', '🎬 Starting story generation request', {
+    userInfo,
+    apiUrl: `${API_URL}/api/story/generate`
   });
 
   try {
+    log('info', '📡 Sending HTTP request to story generation endpoint');
     const response = await fetch(`${API_URL}/api/story/generate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        child_name: userInfo.name,
+        child_age: parseInt(userInfo.age),
+        child_interests: userInfo.interests
+      })
+    });
+
+    const responseTime = Date.now() - startTime;
+    log('info', `📥 Received response from story generation`, {
+      status: response.status,
+      statusText: response.statusText,
+      responseTime: `${responseTime}ms`
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      log('error', 'Story generation failed', {
+        status: response.status,
+        statusText: response.statusText,
+        errorText,
+        responseTime: `${responseTime}ms`
+      });
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+    }
+
+    const data = await response.json();
+    log('info', '✅ Story generated successfully', {
+      storyTitle: data.story?.main?.title || 'N/A',
+      hasStory: !!data.story,
+      hasMetadata: !!data.metadata,
+      responseTime: `${responseTime}ms`,
+      storyId: data.metadata?.id
+    });
+
+    return {
+      story: data.story,
+      metadata: data.metadata
+    };
+  } catch (error) {
+    const responseTime = Date.now() - startTime;
+    log('error', '💥 Story generation failed', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      responseTime: `${responseTime}ms`,
+      userInfo
+    });
+    throw error;
+  }
+};
+
+export async function fetchGeneratedImage(prompt: string, keys: any): Promise<string> {
+  const startTime = Date.now();
+  log('info', '🖼️ Starting image generation request', {
+    prompt: prompt.substring(0, 100) + (prompt.length > 100 ? '...' : ''),
+    promptLength: prompt.length,
+    hasKeys: {
+      accessCode: !!keys.accessCode,
+      openaiKey: !!keys.openaiKey,
+      elevenLabsKey: !!keys.elevenLabsKey,
+      replicateToken: !!keys.replicateToken
+    }
+  });
+
+  try {
+    const response = await fetch(`${API_URL}/api/story/generate-image`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -66,52 +163,47 @@ export const generateStory = async (userInfo: {
         ...(keys.elevenLabsKey && { 'X-ElevenLabs-Key': keys.elevenLabsKey }),
         ...(keys.replicateToken && { 'X-Replicate-Token': keys.replicateToken }),
       },
-      body: JSON.stringify({
-        child_name: userInfo.name,
-        child_age: userInfo.age,
-        child_interests: userInfo.interests
-      })
+      body: JSON.stringify({ prompt: prompt }),
     });
 
-    await validateApiResponse(response);
+    const responseTime = Date.now() - startTime;
+    log('info', '📥 Image generation response received', {
+      status: response.status,
+      statusText: response.statusText,
+      responseTime: `${responseTime}ms`
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      log('error', 'Image generation failed', {
+        status: response.status,
+        statusText: response.statusText,
+        errorText,
+        responseTime: `${responseTime}ms`
+      });
+      throw new Error(`Failed to generate image: ${response.status} - ${errorText}`);
+    }
+
     const data = await response.json();
-
-    // Pass the stored keys to image generation
-    const scenesWithImages = await Promise.all(data.story.scenes.map(async (scene: { prompt: string }) => {
-      const imageUrl = await fetchGeneratedImage(scene.prompt, keys);
-      return { ...scene, imageUrl };
-    }));
-
-    return {
-      story: { ...data.story, scenes: scenesWithImages }
-    };
+    const imagePath = data.image_path;
+    const imageUrl = `${API_URL}/${imagePath}`;
+    
+    log('info', '✅ Image generated successfully', {
+      imagePath,
+      imageUrl,
+      responseTime: `${responseTime}ms`
+    });
+    
+    return imageUrl;
   } catch (error) {
-    console.error('Error generating story:', error);
+    const responseTime = Date.now() - startTime;
+    log('error', '💥 Image generation failed', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      responseTime: `${responseTime}ms`,
+      prompt: prompt.substring(0, 50) + '...'
+    });
     throw error;
   }
-};
-
-export async function fetchGeneratedImage(prompt: string, keys: any): Promise<string> {
-  const response = await fetch(`${API_URL}/api/story/generate-image`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      ...(keys.accessCode && { 'X-Access-Code': keys.accessCode }),
-      ...(keys.openaiKey && { 'X-OpenAI-Key': keys.openaiKey }),
-      ...(keys.elevenLabsKey && { 'X-ElevenLabs-Key': keys.elevenLabsKey }),
-      ...(keys.replicateToken && { 'X-Replicate-Token': keys.replicateToken }),
-    },
-    body: JSON.stringify({ prompt: prompt }),
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed to generate image');
-  }
-
-  const data = await response.json();
-  const imagePath = data.image_path;
-  const imageUrl = `${API_URL}/${imagePath}`;
-  return imageUrl;      
 }
 
 export async function playAudio(
@@ -119,15 +211,30 @@ export async function playAudio(
   voice: string = 'alloy', 
   provider: 'openai' | 'elevenlabs' = 'elevenlabs'
 ): Promise<void> {
-  console.log('🎧 Starting audio request:', { text, voice, provider });
+  const startTime = Date.now();
+  log('info', '🎧 Starting audio generation request', { 
+    textLength: text.length,
+    textPreview: text.substring(0, 50) + (text.length > 50 ? '...' : ''),
+    voice, 
+    provider 
+  });
   
   const keys = getStoredKeys();
   if (!keys) {
+    log('error', 'No credentials found for audio generation');
     throw new Error('No credentials found');
   }
 
+  log('info', '🔑 Using stored keys for audio request', {
+    hasAccessCode: !!keys.accessCode,
+    hasOpenaiKey: !!keys.openaiKey,
+    hasElevenLabsKey: !!keys.elevenLabsKey
+  });
+
   try {
     const startFetch = Date.now();
+    log('info', '📡 Sending audio generation request');
+    
     const response = await fetch(`${API_URL}/api/story/generate-audio`, {
       method: 'POST',
       headers: {
@@ -143,16 +250,26 @@ export async function playAudio(
       }),
     });
 
-    console.log('📡 Audio response received:', {
+    const responseTime = Date.now() - startFetch;
+    log('info', '📥 Audio generation response received', {
       status: response.status,
-      latency: `${Date.now() - startFetch}ms`
+      statusText: response.statusText,
+      latency: `${responseTime}ms`
     });
 
     if (!response.ok) {
-      throw new Error('Failed to generate audio');
+      const errorText = await response.text();
+      log('error', 'Audio generation failed', {
+        status: response.status,
+        statusText: response.statusText,
+        errorText,
+        responseTime: `${responseTime}ms`
+      });
+      throw new Error(`Failed to generate audio: ${response.status} - ${errorText}`);
     }
 
     // Create a MediaSource
+    log('info', '🎬 Setting up audio streaming');
     const mediaSource = new MediaSource();
     const audio = new Audio();
     audio.src = URL.createObjectURL(mediaSource);
@@ -163,6 +280,7 @@ export async function playAudio(
     return new Promise((resolve, reject) => {
       mediaSource.addEventListener('sourceopen', async () => {
         try {
+          log('info', '📺 Media source opened, starting stream processing');
           const reader = response.body!.getReader();
           const sourceBuffer = mediaSource.addSourceBuffer('audio/mpeg');
           
@@ -178,29 +296,64 @@ export async function playAudio(
             });
             
             sourceBuffer.appendBuffer(value);
+            
+            // Log progress every 10 chunks to avoid spam
+            if (chunksReceived % 10 === 0) {
+              log('info', `📊 Streaming progress: ${chunksReceived} chunks received`);
+            }
           }
           
-          console.log('🎵 Stream complete:', {
+          const streamDuration = Date.now() - startStream;
+          const totalDuration = Date.now() - startTime;
+          
+          log('info', '🎵 Audio stream complete', {
             chunks: chunksReceived,
-            duration: `${Date.now() - startStream}ms`
+            streamDuration: `${streamDuration}ms`,
+            totalDuration: `${totalDuration}ms`
           });
 
           mediaSource.endOfStream();
-          audio.play();
+          log('info', '▶️ Starting audio playback');
+          
+          const playPromise = audio.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(error => {
+              log('error', 'Audio play() promise rejected', error);
+              reject(new Error(`Audio playback failed: ${error.message}`));
+            });
+          }
           
           audio.onended = () => {
-            console.log('🏁 Audio playback complete');
+            const totalDuration = Date.now() - startTime;
+            log('info', '🏁 Audio playback complete', { 
+              totalDuration: `${totalDuration}ms` 
+            });
             resolve();
           };
-          audio.onerror = () => reject(new Error('Audio playback failed'));
+          
+          audio.onerror = (event) => {
+            log('error', 'Audio playback error', event);
+            reject(new Error('Audio playback failed'));
+          };
+          
         } catch (error) {
-          console.error('❌ Streaming error:', error);
+          log('error', '❌ Audio streaming error', {
+            error: error instanceof Error ? error.message : 'Unknown error',
+            chunksReceived
+          });
           reject(error);
         }
+              });
       });
-    });
   } catch (error) {
-    console.error('❌ Audio error:', error);
+    const totalDuration = Date.now() - startTime;
+    log('error', '💥 Audio generation failed', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      totalDuration: `${totalDuration}ms`,
+      textLength: text.length,
+      provider,
+      voice
+    });
     throw error;
   }
 }
