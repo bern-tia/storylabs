@@ -26,11 +26,11 @@ export default function UserInputForm({ onSubmit }: UserInputFormProps) {
       transition={{ duration: 0.5 }}
       className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full"
     >
-      <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">Tell us about yourself!</h2>
+      <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">Ceritakan tentang dirimu!</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="name" className="block text-lg font-medium text-gray-700 mb-2">
-            What's your name?
+            Siapa namamu?
           </label>
           <Input
             id="name"
@@ -42,13 +42,13 @@ export default function UserInputForm({ onSubmit }: UserInputFormProps) {
         </div>
         <div>
           <label htmlFor="age" className="block text-lg font-medium text-gray-700 mb-2">
-            How old are you?
+            Berapa umurmu?
           </label>
           <Input
             id="age"
             type="number"
             min="3"
-            max="7"
+            max="12"
             value={age}
             onChange={(e) => setAge(e.target.value)}
             required
@@ -57,7 +57,7 @@ export default function UserInputForm({ onSubmit }: UserInputFormProps) {
         </div>
         <div>
           <label htmlFor="interests" className="block text-lg font-medium text-gray-700 mb-2">
-            What do you like?
+            Apa yang kamu suka?
           </label>
           <Input
             id="interests"
@@ -71,7 +71,7 @@ export default function UserInputForm({ onSubmit }: UserInputFormProps) {
           type="submit"
           className="w-full text-xl py-3 px-4 bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold rounded-full transition-all duration-200 transform hover:scale-105"
         >
-          Start My Story!
+          Mulai Ceritaku!
         </Button>
       </form>
     </motion.div>

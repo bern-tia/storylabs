@@ -1,7 +1,5 @@
-// Directly set API URL based on environment
-export const API_URL = process.env.NODE_ENV === 'production'
-  ? 'https://storylabs-api.onrender.com'  // Production URL
-  : 'http://localhost:8000';              // Development URL
+// Force development URL to use local backend
+export const API_URL = 'http://localhost:8002';  // Local development backend
 
 console.log('Environment:', process.env.NODE_ENV);
 console.log('Using API_URL:', API_URL);
@@ -43,9 +41,71 @@ export const generateStory = async (userInfo: {
   age: string;
   interests: string;
 }) => {
-  const keys = getStoredKeys();
-  if (!keys) {
-    throw new Error('No credentials found');
+  const startTime = Date.now();
+  console.log('🎬 Starting story generation request', {
+    userInfo,
+    apiUrl: `${API_URL}/api/story/generate`
+  });
+
+  try {
+    console.log('📡 Sending HTTP request to story generation endpoint');
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 second timeout
+    
+    const response = await fetch(`${API_URL}/api/story/generate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        child_name: userInfo.name,
+        child_age: parseInt(userInfo.age),
+        child_interests: userInfo.interests
+      }),
+      signal: controller.signal
+    });
+    
+    clearTimeout(timeoutId);
+
+    const responseTime = Date.now() - startTime;
+    console.log(`📥 Received response from story generation`, {
+      status: response.status,
+      statusText: response.statusText,
+      responseTime: `${responseTime}ms`
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Story generation failed', {
+        status: response.status,
+        statusText: response.statusText,
+        errorText,
+        responseTime: `${responseTime}ms`
+      });
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+    }
+
+    const data = await response.json();
+    console.log('✅ Story generated successfully', {
+      storyTitle: data.story?.main?.title || 'N/A',
+      hasStory: !!data.story,
+      hasMetadata: !!data.metadata,
+      responseTime: `${responseTime}ms`,
+      storyId: data.metadata?.id
+    });
+
+    return {
+      story: data.story,
+      metadata: data.metadata
+    };
+  } catch (error) {
+    const responseTime = Date.now() - startTime;
+    console.error('💥 Story generation failed', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      responseTime: `${responseTime}ms`,
+      userInfo
+    });
+    throw error;
   }
 
   // Add debug logging
@@ -152,53 +212,35 @@ export async function playAudio(
       throw new Error('Failed to generate audio');
     }
 
-    // Create a MediaSource
-    const mediaSource = new MediaSource();
-    const audio = new Audio();
-    audio.src = URL.createObjectURL(mediaSource);
-
-    let chunksReceived = 0;
-    const startStream = Date.now();
-
-    return new Promise((resolve, reject) => {
-      mediaSource.addEventListener('sourceopen', async () => {
-        try {
-          const reader = response.body!.getReader();
-          const sourceBuffer = mediaSource.addSourceBuffer('audio/mpeg');
-          
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-            chunksReceived++;
-            
-            // Wait for the buffer to be ready
-            await new Promise(resolve => {
-              if (!sourceBuffer.updating) resolve(null);
-              else sourceBuffer.addEventListener('updateend', () => resolve(null), { once: true });
-            });
-            
-            sourceBuffer.appendBuffer(value);
-          }
-          
-          console.log('🎵 Stream complete:', {
-            chunks: chunksReceived,
-            duration: `${Date.now() - startStream}ms`
-          });
-
-          mediaSource.endOfStream();
-          audio.play();
-          
-          audio.onended = () => {
-            console.log('🏁 Audio playback complete');
-            resolve();
-          };
-          audio.onerror = () => reject(new Error('Audio playback failed'));
-        } catch (error) {
-          console.error('❌ Streaming error:', error);
-          reject(error);
-        }
-      });
+    const audioData = await response.json();
+    console.log('🎵 Audio data received:', {
+      hasAudioUrl: !!audioData.audio_url,
+      provider: audioData.provider,
+      status: audioData.status
     });
+
+    if (audioData.audio_url) {
+      return new Promise((resolve, reject) => {
+        const audio = new Audio(audioData.audio_url);
+        
+        audio.onended = () => {
+          console.log('🏁 Audio playback complete');
+          resolve();
+        };
+        
+        audio.onerror = (error) => {
+          console.error('❌ Audio playback error:', error);
+          reject(new Error('Audio playback failed'));
+        };
+        
+        audio.onloadeddata = () => {
+          console.log('✅ Audio loaded, starting playback');
+          audio.play().catch(reject);
+        };
+      });
+    } else {
+      throw new Error('No audio URL received');
+    }
   } catch (error) {
     console.error('❌ Audio error:', error);
     throw error;

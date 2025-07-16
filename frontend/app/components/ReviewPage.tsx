@@ -14,7 +14,7 @@ export default function ReviewPage({ story, onStartNewStory }: ReviewPageProps) 
       className="bg-white p-8 rounded-lg shadow-lg max-w-4xl w-full"
     >
       <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">
-        Story Complete! 🎉
+        Cerita Selesai! 🎉
       </h2>
 
       <div className="space-y-6">
@@ -26,7 +26,7 @@ export default function ReviewPage({ story, onStartNewStory }: ReviewPageProps) 
 
         <div className="bg-purple-50 p-6 rounded-lg">
           <h4 className="text-xl font-semibold text-purple-700 mb-3">
-            Words Learned:
+            Kata-kata yang Dipelajari:
           </h4>
           <div className="flex flex-wrap gap-2">
             {story.main.state.global_state.words_learned.map((word: string) => (
@@ -48,7 +48,7 @@ export default function ReviewPage({ story, onStartNewStory }: ReviewPageProps) 
             className="text-lg py-2 px-6 bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold rounded-full 
                      transition-all duration-200 transform hover:scale-105"
           >
-            Start a New Story
+            Buat Cerita Baru
           </Button>
         </div>
       </div>

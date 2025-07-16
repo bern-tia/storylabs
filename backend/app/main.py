@@ -46,6 +46,6 @@ app.include_router(story.router, prefix="/api/story", tags=["story"])
 async def startup_event():
     logger.info("Starting FastAPI application...")
     # Log all environment variables (last 3 chars only for security)
-    for key in ["ACCESS_CODE", "OPENAI_API_KEY", "ELEVENLABS_API_KEY", "REPLICATE_API_TOKEN"]:
+    for key in ["ACCESS_CODE", "OPENAI_API_KEY", "ELEVENLABS_API_KEY", "REPLICATE_API_TOKEN", "GEMINI_API_KEY"]:
         value = os.environ.get(key)
         logger.info(f"{key} is {'SET (ends with ...' + value[-3:] + ')' if value else 'NOT SET'}")
