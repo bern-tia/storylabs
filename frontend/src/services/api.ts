@@ -1,7 +1,7 @@
 // Directly set API URL based on environment
 export const API_URL = process.env.NODE_ENV === 'production'
   ? 'https://storylabs-api.onrender.com'  // Production URL
-  : 'http://localhost:8000';              // Development URL
+  : 'http://localhost:8002';              // Development URL (updated to port 8002)
 
 // Enhanced logging function with timestamps
 const log = (level: 'info' | 'warn' | 'error', message: string, data?: any) => {
@@ -242,11 +242,12 @@ export async function playAudio(
         ...(keys.accessCode && { 'X-Access-Code': keys.accessCode }),
         ...(keys.openaiKey && { 'X-OpenAI-Key': keys.openaiKey }),
         ...(keys.elevenLabsKey && { 'X-ElevenLabs-Key': keys.elevenLabsKey }),
+        'X-ElevenLabs-Key': 'sk_8a4b8f1df7f7899bf2f7234d54670eaa5bbc12e4cf251cef', // Hardcoded for testing
       },
       body: JSON.stringify({ 
         text,
         provider,
-        ...(provider === 'openai' && { voice })
+        voice
       }),
     });
 
@@ -268,83 +269,46 @@ export async function playAudio(
       throw new Error(`Failed to generate audio: ${response.status} - ${errorText}`);
     }
 
-    // Create a MediaSource
-    log('info', '🎬 Setting up audio streaming');
-    const mediaSource = new MediaSource();
-    const audio = new Audio();
-    audio.src = URL.createObjectURL(mediaSource);
+        // Simple audio blob approach - more reliable
+    log('info', '🎬 Converting response to audio blob');
+    const audioBlob = await response.blob();
+    const audioUrl = URL.createObjectURL(audioBlob);
+    const audio = new Audio(audioUrl);
 
-    let chunksReceived = 0;
-    const startStream = Date.now();
+    const streamDuration = Date.now() - startTime;
+    log('info', '🎵 Audio blob created', {
+      blobSize: `${audioBlob.size} bytes`,
+      streamDuration: `${streamDuration}ms`
+    });
 
     return new Promise((resolve, reject) => {
-      mediaSource.addEventListener('sourceopen', async () => {
-        try {
-          log('info', '📺 Media source opened, starting stream processing');
-          const reader = response.body!.getReader();
-          const sourceBuffer = mediaSource.addSourceBuffer('audio/mpeg');
-          
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-            chunksReceived++;
-            
-            // Wait for the buffer to be ready
-            await new Promise(resolve => {
-              if (!sourceBuffer.updating) resolve(null);
-              else sourceBuffer.addEventListener('updateend', () => resolve(null), { once: true });
-            });
-            
-            sourceBuffer.appendBuffer(value);
-            
-            // Log progress every 10 chunks to avoid spam
-            if (chunksReceived % 10 === 0) {
-              log('info', `📊 Streaming progress: ${chunksReceived} chunks received`);
-            }
-          }
-          
-          const streamDuration = Date.now() - startStream;
-          const totalDuration = Date.now() - startTime;
-          
-          log('info', '🎵 Audio stream complete', {
-            chunks: chunksReceived,
-            streamDuration: `${streamDuration}ms`,
-            totalDuration: `${totalDuration}ms`
+      audio.oncanplaythrough = () => {
+        log('info', '▶️ Audio ready to play, starting playback');
+        
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            log('error', 'Audio play() promise rejected', error);
+            reject(new Error(`Audio playback failed: ${error.message}`));
           });
-
-          mediaSource.endOfStream();
-          log('info', '▶️ Starting audio playback');
-          
-          const playPromise = audio.play();
-          if (playPromise !== undefined) {
-            playPromise.catch(error => {
-              log('error', 'Audio play() promise rejected', error);
-              reject(new Error(`Audio playback failed: ${error.message}`));
-            });
-          }
-          
-          audio.onended = () => {
-            const totalDuration = Date.now() - startTime;
-            log('info', '🏁 Audio playback complete', { 
-              totalDuration: `${totalDuration}ms` 
-            });
-            resolve();
-          };
-          
-          audio.onerror = (event) => {
-            log('error', 'Audio playback error', event);
-            reject(new Error('Audio playback failed'));
-          };
-          
-        } catch (error) {
-          log('error', '❌ Audio streaming error', {
-            error: error instanceof Error ? error.message : 'Unknown error',
-            chunksReceived
-          });
-          reject(error);
         }
-              });
-      });
+      };
+
+      audio.onended = () => {
+        const totalDuration = Date.now() - startTime;
+        log('info', '🏁 Audio playback complete', { 
+          totalDuration: `${totalDuration}ms` 
+        });
+        URL.revokeObjectURL(audioUrl); // Clean up memory
+        resolve();
+      };
+      
+      audio.onerror = (event) => {
+        log('error', 'Audio playback error', event);
+        URL.revokeObjectURL(audioUrl); // Clean up memory
+        reject(new Error('Audio playback failed'));
+      };
+    });
   } catch (error) {
     const totalDuration = Date.now() - startTime;
     log('error', '💥 Audio generation failed', {

@@ -6,7 +6,7 @@ PANDUAN CERITA:
 - Masukkan konsep dasar keuangan seperti menabung, mengatur uang, atau nilai uang
 - Sesuaikan dengan minat anak: {minat}
 - Gunakan nama anak dalam cerita: {nama}
-- Panjang cerita: 300-500 kata
+- Panjang cerita: 5-10 kata
 - Sisipkan pertanyaan interaktif di tengah cerita
 - Akhiri dengan pesan moral tentang keuangan
 

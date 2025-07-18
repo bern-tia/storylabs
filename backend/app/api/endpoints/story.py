@@ -5,10 +5,11 @@ import os
 from datetime import datetime
 import uuid
 from dotenv import load_dotenv
-from gtts import gTTS
 import io
 from fastapi.responses import StreamingResponse
 import logging
+from elevenlabs import ElevenLabs
+from typing import Optional
 
 # Setup logging
 logger = logging.getLogger(__name__)
@@ -63,9 +64,9 @@ try:
         logger.warning("Using hardcoded API key for testing")
     
     genai.configure(api_key=api_key)
-    # Gunakan model yang benar (gemini-1.5-flash, bukan gemini-pro yang deprecated)
-    model = genai.GenerativeModel('gemini-1.5-flash')
-    logger.info(f"Gemini API configured successfully with model gemini-1.5-flash, key ending in ...{api_key[-4:]}")
+    # Gunakan model stable Gemini 2.0 Flash - proven reliable for story generation
+    model = genai.GenerativeModel('gemini-2.0-flash-exp')
+    logger.info(f"Gemini API configured successfully with model gemini-2.0-flash-exp, key ending in ...{api_key[-4:]}")
     
 except Exception as e:
     logger.error(f"Failed to configure Gemini API: {e}")
@@ -92,8 +93,8 @@ async def generate_story(request: StoryRequest):
             
             # Create fresh configuration and model (not using global)
             genai.configure(api_key=api_key)
-            model = genai.GenerativeModel('gemini-1.5-flash')
-            logger.info("✅ Fresh Gemini model created successfully")
+            model = genai.GenerativeModel('gemini-2.0-flash-exp')
+            logger.info("✅ Fresh Gemini 2.0 Flash model created successfully")
         except Exception as e:
             logger.error(f"❌ Failed to create Gemini model: {e}")
             raise HTTPException(status_code=500, detail=f"Gemini API not configured: {e}")
@@ -193,7 +194,7 @@ Buatlah cerita yang menarik dan mendidik!
                 {
                     "name": "Narrator",
                     "prompt": "Narrator yang ramah untuk cerita literasi keuangan",
-                    "voice": "alloy",
+                    "voice": "1k39YpzqXZn52BgyLyGO",
                     "personality": {
                         "trait": "ramah dan mendidik",
                         "goal": "mengajarkan literasi keuangan",
@@ -215,7 +216,7 @@ Buatlah cerita yang menarik dan mendidik!
                             "character": {
                                 "name": "Narrator",
                                 "prompt": "Narrator yang ramah",
-                                "voice": "alloy",
+                                "voice": "1k39YpzqXZn52BgyLyGO",
                                 "personality": {
                                     "trait": "ramah dan mendidik",
                                     "goal": "mengajarkan literasi keuangan", 
@@ -256,11 +257,14 @@ Buatlah cerita yang menarik dan mendidik!
 
 class AudioRequest(BaseModel):
     text: str
-    provider: str = "gtts"  # Default to gtts, support "openai", "elevenlabs", "gtts"
-    voice: str = "alloy"    # Voice parameter for OpenAI/ElevenLabs
+    provider: str = "elevenlabs"  # Default to ElevenLabs, support "openai", "elevenlabs"
+    voice: str = "1k39YpzqXZn52BgyLyGO"    # Default to BEE ARD voice
 
 @router.post("/generate-audio")
-async def generate_audio(request: AudioRequest):
+async def generate_audio(
+    request: AudioRequest, 
+    x_elevenlabs_key: Optional[str] = Header(None, alias="X-ElevenLabs-Key")
+):
     try:
         logger.info(f"🎧 [AUDIO] Starting audio generation", {
             "text_length": len(request.text),
@@ -269,25 +273,95 @@ async def generate_audio(request: AudioRequest):
             "text_preview": request.text[:50] + "..." if len(request.text) > 50 else request.text
         })
         
-        # For now, we'll use gTTS for all providers since it's the most reliable
-        # TODO: Implement OpenAI and ElevenLabs integration later
-        logger.info(f"🔊 Using Google Text-to-Speech (gTTS) for audio generation")
+        if request.provider == "elevenlabs":
+            logger.info(f"🎤 Using ElevenLabs for audio generation with voice: {request.voice}")
+            
+            # Get API key from header or use default
+            api_key = x_elevenlabs_key or "sk_8a4b8f1df7f7899bf2f7234d54670eaa5bbc12e4cf251cef"
+            
+            if not api_key:
+                logger.error("❌ No ElevenLabs API key provided")
+                raise HTTPException(status_code=400, detail="ElevenLabs API key required")
+            
+            try:
+                # Initialize ElevenLabs client
+                client = ElevenLabs(api_key=api_key)
+                logger.info(f"✅ ElevenLabs client initialized successfully")
+                
+                # Generate audio
+                #pengaturan jenis suara sini gomgom
+                audio_generator = client.text_to_speech.convert(
+                    voice_id=request.voice,
+                    output_format="mp3_44100_128",
+                    text=request.text,
+                    model_id="eleven_multilingual_v2",  # Changed to cheaper model
+                )
+                
+                # Collect audio data
+                audio_data = b""
+                for chunk in audio_generator:
+                    audio_data += chunk
+                
+                logger.info(f"✅ [AUDIO] ElevenLabs audio generation completed successfully")
+                
+                return StreamingResponse(
+                    io.BytesIO(audio_data),
+                    media_type="audio/mpeg",
+                    headers={
+                        "Content-Length": str(len(audio_data)),
+                        "Accept-Ranges": "bytes",
+                        "Cache-Control": "no-cache"
+                    }
+                )
+                
+            except Exception as e:
+                logger.error(f"❌ ElevenLabs API error: {e}")
+                raise HTTPException(status_code=500, detail=f"ElevenLabs API error: {str(e)}")
         
-        # Generate Indonesian TTS
-        tts = gTTS(text=request.text, lang='id', slow=False)
+        elif request.provider == "openai":
+            logger.info(f"🎤 OpenAI provider requested - fallback to ElevenLabs with BEE ARD voice")
+            
+            # Convert OpenAI request to ElevenLabs with BEE ARD voice
+            api_key = x_elevenlabs_key or "sk_8a4b8f1df7f7899bf2f7234d54670eaa5bbc12e4cf251cef"
+            bee_ard_voice = "1k39YpzqXZn52BgyLyGO"
+            
+            try:
+                # Initialize ElevenLabs client
+                client = ElevenLabs(api_key=api_key)
+                logger.info(f"✅ ElevenLabs client initialized (OpenAI fallback) using BEE ARD voice")
+                
+                # Generate audio with BEE ARD voice
+                audio_generator = client.text_to_speech.convert(
+                    voice_id=bee_ard_voice,
+                    output_format="mp3_44100_128",
+                    text=request.text,
+                    model_id="eleven_multilingual_v2",  # Changed to cheaper model
+                )
+                
+                # Collect audio data
+                audio_data = b""
+                for chunk in audio_generator:
+                    audio_data += chunk
+                
+                logger.info(f"✅ [AUDIO] OpenAI->ElevenLabs (BEE ARD) audio generation completed successfully")
+                
+                return StreamingResponse(
+                    io.BytesIO(audio_data),
+                    media_type="audio/mpeg",
+                    headers={
+                        "Content-Length": str(len(audio_data)),
+                        "Accept-Ranges": "bytes",
+                        "Cache-Control": "no-cache"
+                    }
+                )
+                
+            except Exception as e:
+                logger.error(f"❌ ElevenLabs API error (OpenAI fallback): {e}")
+                raise HTTPException(status_code=500, detail=f"ElevenLabs API error: {str(e)}")
         
-        # Save to BytesIO object
-        fp = io.BytesIO()
-        tts.write_to_fp(fp)
-        fp.seek(0)
-        
-        logger.info(f"✅ [AUDIO] Audio generation completed successfully")
-        
-        return StreamingResponse(
-            io.BytesIO(fp.read()),
-            media_type="audio/mpeg",
-            headers={"Content-Disposition": "attachment; filename=story_audio.mp3"}
-        )
+        else:
+            logger.error(f"❌ Unsupported provider: {request.provider}")
+            raise HTTPException(status_code=400, detail=f"Unsupported provider: {request.provider}. Supported providers: elevenlabs, openai")
         
     except Exception as e:
         logger.error(f"💥 Error generating audio: {str(e)}", exc_info=True)
