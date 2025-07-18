@@ -17,6 +17,8 @@ interface ApiKeys {
 }
 
 export default function LandingPage({ onStart }: LandingPageProps) {
+  // Comment out access code functionality for prototype
+  /*
   const [apiKeys, setApiKeys] = useState<ApiKeys>({});
   const [useAccessCode, setUseAccessCode] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -71,16 +73,22 @@ export default function LandingPage({ onStart }: LandingPageProps) {
     localStorage.setItem('storylabs_keys', JSON.stringify(keysToStore));
     onStart();
   };
+  */
+
+  // Simplified for prototype - direct start
+  const handleStart = () => {
+    onStart();
+  };
 
   return (
     <div className="text-center w-full min-h-screen flex flex-col items-center justify-center p-4">
       <motion.img
-        src="/storylabs.png"
-        alt="StoryLabs Logo"
+        src="/assets/characters/maskot_logo.jpeg"
+        alt="Lab Cerita Anak Logo"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-32 mb-4"
+        className="w-40 h-40 object-contain rounded-full mb-6 shadow-lg"
       />
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
@@ -88,17 +96,18 @@ export default function LandingPage({ onStart }: LandingPageProps) {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="text-6xl font-bold text-white mb-2"
       >
-        StoryLabs
+        Lab Cerita Anak
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-xl text-white/80 mb-8 italic"
+        className="text-xl text-white/90 mb-12 italic"
       >
-        An interactive reading adventure for children
+        Bacaan Seru dan Interaktif untuk Si Kecil
       </motion.p>
       
+      {/* Comment out access code section
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -183,9 +192,11 @@ export default function LandingPage({ onStart }: LandingPageProps) {
           ? "Enter access code to use our API keys"
           : "Provide your own API keys for OpenAI, ElevenLabs, and Replicate"}
       </motion.div>
+      */}
 
-      <AudioWaveform />
+      <BouncingBalls />
 
+      {/* Comment out error display
       {error && (
         <motion.div 
           initial={{ opacity: 0 }}
@@ -195,32 +206,38 @@ export default function LandingPage({ onStart }: LandingPageProps) {
           {error}
         </motion.div>
       )}
+      */}
 
       <Button
-        onClick={handleSubmit}
+        onClick={handleStart}
         size="lg"
-        disabled={!isValid}
-        className="mt-8 text-2xl py-6 px-8 rounded-full bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
+        className="mt-8 text-2xl py-6 px-8 rounded-full bg-orange-400 hover:bg-orange-500 text-blue-800 font-bold transition-all duration-200 transform hover:scale-105 shadow-lg"
       >
-        Click to Start
+        Mulai Petualangan!
       </Button>
     </div>
   )
 }
 
-function AudioWaveform() {
+function BouncingBalls() {
   return (
-    <svg width="200" height="50" viewBox="0 0 200 50" className="mx-auto mb-8">
-      <motion.path
-        d="M0 25 Q25 5 50 25 T100 25 T150 25 T200 25"
-        fill="none"
-        stroke="white"
-        strokeWidth="2"
-        initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
-        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-      />
-    </svg>
+    <div className="flex justify-center items-center space-x-2 mb-8 h-16">
+      {[0, 1, 2, 3, 4].map((index) => (
+        <motion.div
+          key={index}
+          className="w-3 h-3 bg-white rounded-full"
+          animate={{
+            y: [-10, 10, -10],
+          }}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            delay: index * 0.2,
+            ease: "easeInOut"
+          }}
+        />
+      ))}
+    </div>
   )
 }
 

@@ -1,0 +1,62 @@
+[
+  {
+    "theme": "belajar_menabung",
+    "related_hobby": [
+      "bersepeda",
+      "mengoleksi mainan",
+      "bermain gim",
+      "membaca buku",
+      "berkebun",
+      "memelihara hewan peliharaan",
+      "memasak",
+      "menggambar",
+      "fotografi",
+      "mendaki",
+      "berkemah",
+      "berenang",
+      "menulis cerita",
+      "belajar coding",
+      "membuat kerajinan tangan"
+    ]
+  },
+  {
+    "theme": "membedakan_kebutuhan_dan_keinginan",
+    "related_hobby": [
+      "suka jajan",
+      "berbelanja aksesoris",
+      "mendekorasi kamar",
+      "mengikuti tren fashion",
+      "koleksi barang lucu",
+      "menonton YouTube",
+      "bermain gim online",
+      "jalan-jalan ke mall",
+      "update gadget",
+      "main media sosial",
+      "berlangganan layanan streaming",
+      "koleksi stiker atau boneka",
+      "beli merchandise artis",
+      "ikut event berbayar",
+      "coba makanan kekinian"
+    ]
+  },
+  {
+    "theme": "hindari_berutang_sembarangan",
+    "related_hobby": [
+      "bermain gim",
+      "mengikuti komunitas kolektor",
+      "fashion",
+      "mengadakan pesta ulang tahun",
+      "main skateboard",
+      "main musik",
+      "nonton konser",
+      "bikin konten",
+      "modifikasi sepeda",
+      "pergi liburan",
+      "beli item dalam gim",
+      "mengikuti challenge berhadiah",
+      "berlangganan aplikasi",
+      "koleksi mainan mahal",
+      "nongkrong di kafe"
+    ]
+  }
+] 
