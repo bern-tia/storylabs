@@ -790,43 +790,50 @@
                   "part": 1,
                   "type": "story",
                   "content": "Saat istirahat di sekolah, <nama> melihat Rafi membawa mainan robot baru. Robot itu keren sekali—bisa berjalan, bersuara, bahkan menari. Robot itu berwarna biru metalik dengan lampu-lampu yang berkedip dan suara yang menarik. Teman-teman lain pun ikut berkumpul melihatnya. <nama> merasa iri dan ingin sekali punya robot yang sama. Ia membayangkan betapa serunya kalau bisa bermain robot di rumah.",
-                  "image_source": "assets/scenes/img_robot_part_1.jpg"
+                  "image_source": "scenes/img_robot_part_1.png",
+                  "voice_source": "voices/robot-robotan_1.mp3"
                 },
                 {
                   "part": 2,
                   "type": "story",
                   "content": "Sepulang sekolah, <nama> menghitung uang tabungannya. Sayangnya, uang itu belum cukup untuk membeli robot seperti milik Rafi. Keesokan harinya, <nama> mengeluh pada Rafi bahwa ia ingin membeli robot itu, tapi belum punya cukup uang. Tanpa disangka, Rafi menawarkan, 'Kalau kamu mau, aku bisa pinjami dulu. Tapi minggu depan harus balikin ya!' Karena terlalu ingin punya robot, <nama> langsung mengangguk dan menerima pinjaman dari Rafi.",
-                  "image_source": "assets/scenes/img_robot_part_2.jpg"
+                  "image_source": "scenes/img_robot_part_2.png",
+                  "voice_source": "voices/robot-robotan_2.mp3"
                 },
                 {
                   "part": 2.1,
                   "type": "interactive_question",
                   "question": "Kalau kamu jadi <nama>, apa yang sebaiknya kamu lakukan saat tidak bisa membayar pinjaman tepat waktu?",
-                  "image_source": "assets/scenes/img_character_question.jpg"
+                  "image_source": "characters/maskot_menjelaskan.jpeg",
+                  "voice_source": "voices/robot-robotan_2.1.mp3"
                 },
                 {
                   "part": 3,
                   "type": "story",
                   "content": "Seminggu berlalu, tapi <nama> belum bisa mengembalikan uang Rafi. Setiap kali bertemu Rafi, <nama> jadi gugup dan menghindar. Rafi pun mulai kecewa. Ia berkata, 'Katanya minggu lalu kamu janji balikin. Jangan-jangan kamu lupa?' <nama> merasa sangat bersalah. Ia mulai kehilangan rasa nyaman bermain dengan Rafi, dan hubungan mereka jadi renggang.",
-                  "image_source": "assets/scenes/img_robot_part_3.jpg"
+                  "image_source": "scenes/img_robot_part_3.png",
+                  "voice_source": "voices/robot-robotan_3.mp3"
                 },
                 {
                   "part": 4,
                   "type": "story",
                   "content": "Di rumah, <nama> akhirnya bercerita pada Ibu tentang masalahnya. Ibu mendengarkan dengan sabar, lalu berkata, 'Nak, kalau kamu meminjam uang, artinya kamu sudah membuat janji. Kalau tidak bisa memenuhi janji, orang bisa jadi kecewa.' Ibu juga menambahkan, 'Kita sebaiknya hanya meminjam kalau benar-benar perlu, bukan karena keinginan sesaat.' Mendengar itu, <nama> merasa sangat menyesal. Ia lalu mulai menjual beberapa barang lamanya dan menyisihkan uang jajannya sedikit demi sedikit.",
-                  "image_source": "assets/scenes/img_robot_part_4.jpg"
+                  "image_source": "scenes/img_robot_part_4.png",
+                  "voice_source": "voices/robot-robotan_4.mp3"
                 },
                 {
                   "part": 5,
                   "type": "story",
                   "content": "Beberapa hari kemudian, <nama> berhasil mengumpulkan uang dan langsung mengembalikannya kepada Rafi. Ia meminta maaf dan menjelaskan semuanya. Rafi menerima permintaan maafnya, meskipun masih sedikit kesal. Sejak itu, <nama> belajar untuk lebih hati-hati sebelum meminjam, dan lebih memilih menabung jika menginginkan sesuatu.",
-                  "image_source": "assets/scenes/img_robot_part_5.jpg"
+                  "image_source": "scenes/img_robot_part_5.png",
+                  "voice_source": "voices/robot-robotan_5.mp3"
                 },
                 {
                   "part": 6,
                   "type": "moral_value",
                   "content": "Jangan sembarangan berutang hanya karena keinginan. Lebih baik bersabar dan menabung. Jika harus meminjam, pastikan bisa mengembalikan tepat waktu agar tidak merusak hubungan dengan teman.",
-                  "image_source": "assets/scenes/img_character_moral.jpg"
+                  "image_source": "characters/maskot_ceria.jpeg",
+                  "voice_source": "voices/robot-robotan_6.mp3"
                 }
               ]
             }
