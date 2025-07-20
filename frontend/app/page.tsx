@@ -14,10 +14,10 @@ const log = (level: 'info' | 'warn' | 'error', message: string, data?: any) => {
   console[level](`${emoji} [${timestamp}] [HomePage] ${message}`, data ? data : '');
 };
 
-// Story selection service for prototype
+// Story selection service for prototype with hobby-based selection
 const selectStoryFromBanks = async (userInfo: { name: string; age: string; hobby: string; theme: string }) => {
   try {
-    log('info', 'Selecting story from story banks', { userInfo });
+    log('info', 'Selecting story from story banks with hobby consideration', { userInfo });
     
     // Load story banks
     const response = await fetch('/story_banks.json');
@@ -39,8 +39,52 @@ const selectStoryFromBanks = async (userInfo: { name: string; age: string; hobby
       throw new Error(`No stories found for age ${userAge} in theme ${userInfo.theme}`);
     }
     
-    // Select first story for prototype (can be randomized later)
-    const selectedStory = ageGroup.stories[0];
+    // First, try to find a story that matches the user's hobby exactly
+    let selectedStory = ageGroup.stories.find((story: any) => 
+      story.hobby && story.hobby.toLowerCase() === userInfo.hobby.toLowerCase()
+    );
+    
+    // If no exact match, try to find a story with similar hobby
+    if (!selectedStory) {
+      // Create a mapping of hobby variations
+      const hobbyVariations: { [key: string]: string[] } = {
+        'menggambar': ['menggambar', 'lukis', 'seni'],
+        'membaca buku': ['membaca buku', 'membaca', 'buku'],
+        'berkebun': ['berkebun', 'tanam', 'kebun'],
+        'olahraga': ['olahraga', 'sepak bola', 'badminton', 'berenang'],
+        'main musik': ['main musik', 'musik', 'gitar', 'piano'],
+        'fotografi': ['fotografi', 'foto', 'memotret'],
+        'mobil-mobilan': ['mobil-mobilan', 'mobil', 'mainan mobil']
+      };
+      
+      // Find matching hobby variation
+      for (const [baseHobby, variations] of Object.entries(hobbyVariations)) {
+        if (variations.some(v => userInfo.hobby.toLowerCase().includes(v))) {
+          selectedStory = ageGroup.stories.find((story: any) => 
+            story.hobby && story.hobby.toLowerCase() === baseHobby.toLowerCase()
+          );
+          if (selectedStory) break;
+        }
+      }
+    }
+    
+    // If still no match found, use the first story as fallback
+    if (!selectedStory) {
+      selectedStory = ageGroup.stories[0];
+      log('info', 'No hobby-specific story found, using fallback story', {
+        requestedHobby: userInfo.hobby,
+        selectedStoryTitle: selectedStory.title,
+        fallback: true,
+        availableHobbies: ageGroup.stories.map((s: any) => s.hobby)
+      });
+    } else {
+      log('info', 'Found hobby-specific story', {
+        requestedHobby: userInfo.hobby,
+        selectedStoryTitle: selectedStory.title,
+        hobbyMatch: true,
+        matchedHobby: selectedStory.hobby
+      });
+    }
     
     // Replace <nama> placeholder with actual name
     const processedStory = {
@@ -57,7 +101,9 @@ const selectStoryFromBanks = async (userInfo: { name: string; age: string; hobby
       storyTitle: processedStory.title,
       partsCount: processedStory.story.length,
       theme: userInfo.theme,
-      age: userAge
+      age: userAge,
+      hobby: userInfo.hobby,
+      hobbyMatched: !!selectedStory.hobby
     });
     
     return processedStory;

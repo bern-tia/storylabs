@@ -4,90 +4,287 @@
       "name": "belajar_menabung",
       "age_groups": [
         {
-          "ages": [5, 6, 7],
+          "ages": [
+            5,
+            6,
+            7
+          ],
           "stories": [
             {
               "story_no": 1,
-              "title": "Tabungan Seribu Rupiah",
+              "title": "Sepeda Impian <nama>",
+              "hobby": "bersepeda",
+              "image_source": "assets/scenes/img_bersepeda_part_1.jpg",
               "story": [
                 {
                   "part": 1,
                   "type": "story",
-                  "content": "Setiap sore sepulang sekolah, <nama> selalu mampir ke warung dekat rumah untuk membeli permen. Permen rasa stroberi dan anggur adalah favoritnya. Tapi suatu hari, saat berjalan pulang, <nama> melihat mainan mobil-mobilan yang keren sekali di etalase toko. Mobil itu bisa berputar dan menyala lampu. Harganya Rp50.000."
+                  "content": "Setiap sore sepulang sekolah, <nama> selalu melihat teman-temannya bermain sepeda di halaman. Mereka tertawa riang sambil mengayuh sepeda keliling kompleks, kadang berlomba siapa yang paling cepat, kadang berhenti di warung untuk beli es krim. <nama> ingin sekali ikut bermain bersama mereka, tapi dia belum punya sepeda sendiri. Suatu hari, saat jalan-jalan dengan mama ke toko sepeda di pusat kota, <nama> melihat sepeda kecil warna merah yang sangat bagus. Sepeda itu punya keranjang kecil di depan, bel sepeda yang berbunyi 'kring kring', dan roda dengan lampu yang menyala saat berputar. Harganya Rp300.000. <nama> langsung membayangkan betapa serunya kalau bisa naik sepeda itu keliling kompleks bersama teman-temannya.",
+                  "image_source": "assets/scenes/img_bersepeda_part_1.jpg"
                 },
                 {
                   "part": 2,
                   "type": "story",
-                  "content": "<nama> langsung membayangkan betapa serunya bermain dengan mobil itu di rumah. Ia ingin sekali memilikinya, tapi uang jajannya hanya cukup untuk membeli permen. Ia pun pulang dengan perasaan sedikit kecewa."
+                  "content": "Mama melihat mata <nama> berbinar saat memandangi sepeda itu. 'Kamu suka sepeda itu, Nak?' tanya mama. <nama> mengangguk pelan. Mama tersenyum dan berkata, 'Sepeda itu memang bagus, tapi harganya mahal sekali untuk anak seusia kamu. Tapi kalau <nama> benar-benar mau sepeda itu, kita bisa mulai menabung dari sekarang.' Mama lalu mengambil celengan ayam kecil berwarna merah dari tasnya. 'Ini celengan untuk <nama>. Setiap hari, <nama> bisa memasukkan uang saku ke dalamnya. Lama-lama uangnya akan terkumpul dan <nama> bisa beli sepeda impianmu.' <nama> sangat senang mendengar itu dan langsung memeluk mama.",
+                  "image_source": "assets/scenes/img_bersepeda_part_2.jpg"
+                },
+                {
+                  "part": 2.1,
+                  "type": "interactive_question",
+                  "question": "Kalau kamu ingin punya sepeda, apa yang akan kamu lakukan untuk mengumpulkan uangnya?",
+                  "image_source": "assets/scenes/img_character_question.jpg"
                 },
                 {
                   "part": 3,
                   "type": "story",
-                  "content": "Sesampainya di rumah, <nama> bercerita kepada ayah tentang mobil impiannya. Ayah tersenyum dan mengambil sesuatu dari lemari. Ternyata, itu adalah celengan berbentuk gajah biru. 'Ini untuk kamu, Nak,' kata ayah. 'Kalau <nama> ingin membeli mainan itu, <nama> bisa mulai menabung. Setiap hari sisihkan uang jajan seribu rupiah, ya.'"
-                },
-                {
-                  "part": 3.1,
-                  "type": "interactive_question",
-                  "question": "Kalau kamu punya celengan, kamu ingin menabung untuk membeli apa?"
+                  "content": "Keesokan harinya, <nama> mulai menabung dengan semangat. Setiap pagi sebelum berangkat sekolah, ia memasukkan uang saku seribu rupiah ke dalam celengan ayamnya. Ia juga mulai membantu mama menyapu halaman rumah setiap sore dan mendapat uang tambahan lima ratus rupiah. Kadang-kadang, saat teman-temannya membeli permen atau es krim, <nama> merasa ingin sekali ikut jajan. Tapi ia selalu ingat sepeda impiannya dan memilih untuk menyimpan uangnya. Suara 'cling cling' dari koin yang masuk ke celengan membuat <nama> senang dan semakin semangat menabung. Mama selalu memuji <nama> karena tekun menabung dan tidak mudah tergoda untuk jajan.",
+                  "image_source": "assets/scenes/img_bersepeda_part_4.jpg"
                 },
                 {
                   "part": 4,
                   "type": "story",
-                  "content": "Besoknya, <nama> mulai membawa bekal dari rumah agar tidak tergoda membeli permen. Ia memasukkan uang seribu rupiah ke dalam celengannya setiap hari. Hari demi hari, suara 'cling cling' dari koin di dalam celengan membuatnya senang. Tapi kadang, <nama> juga merasa sedih karena tidak bisa membeli jajan seperti teman-temannya."
+                  "content": "Setelah tiga bulan menabung dengan tekun, celengan <nama> sudah terasa berat sekali. Suatu sore, mama mengajak <nama> menghitung uang tabungannya. Mereka duduk di meja makan dan mulai menghitung koin dan uang kertas satu per satu. Setelah menghitung dengan teliti, ternyata <nama> sudah mengumpulkan Rp320.000! Lebih dari cukup untuk membeli sepeda impiannya. <nama> sangat senang dan bangga. Mama memeluk <nama> dan berkata, 'Wah, <nama> hebat sekali! Sudah bisa menabung dengan tekun. Sekarang kita bisa beli sepeda impianmu.' Keesokan harinya, mereka pergi ke toko sepeda dan <nama> akhirnya bisa membeli sepeda merah impiannya. Saat pertama kali mengayuh sepeda itu di halaman rumah, <nama> merasa seperti terbang—senang, bangga, dan puas karena berhasil mencapai impiannya dengan usaha sendiri.",
+                  "image_source": "assets/scenes/img_bersepeda_part_5.jpg"
                 },
                 {
                   "part": 5,
+                  "type": "moral_value",
+                  "content": "Dengan menabung sedikit demi sedikit setiap hari, kita bisa membeli sesuatu yang kita inginkan tanpa meminta kepada orang lain. Menabung mengajarkan kita bersabar, tekun, dan menghargai nilai uang. Lebih membanggakan lagi jika hasilnya dari usaha sendiri!",
+                  "image_source": "assets/scenes/img_character_moral.jpg"
+                }
+              ]
+            },
+            {
+              "story_no": 2,
+              "title": "Kotak Krayon <nama>",
+              "hobby": "menggambar",
+              "image_source": "assets/scenes/img_menggambar_part_1.jpg",
+              "story": [
+                {
+                  "part": 1,
                   "type": "story",
-                  "content": "Suatu hari, saat sedang menghitung jumlah uang di celengannya bersama ayah, <nama> tersenyum lebar. Uangnya sudah cukup! Mereka pergi ke toko dan membeli mobil impiannya. <nama> sangat bangga karena bisa membelinya dengan uang sendiri."
+                  "content": "<nama> sangat suka menggambar sejak kecil. Setiap hari ia menghabiskan waktu berjam-jam di meja belajarnya, menggambar berbagai hal yang ia lihat: bunga di taman, kucing tetangga, mobil yang lewat, atau keluarga tercintanya. Tapi <nama> hanya punya krayon kecil yang sudah pendek-pendek dan warnanya terbatas. Suatu hari, saat pergi ke toko alat tulis bersama papa, <nama> melihat kotak krayon besar dengan 48 warna yang indah sekali. Ada warna merah muda, biru langit, hijau daun, kuning matahari, dan banyak warna lainnya yang belum pernah <nama> lihat. Kotak krayon itu terlihat sangat menarik dengan gambar-gambar lucu di sampingnya. Harganya Rp85.000.",
+                  "image_source": "assets/scenes/img_menggambar_part_1.jpg"
                 },
                 {
-                  "part": 6,
+                  "part": 2,
+                  "type": "story",
+                  "content": "Papa melihat <nama> memandangi kotak krayon itu dengan mata berbinar dan mulut terbuka. 'Kamu suka krayon itu, Nak?' tanya Papa sambil tersenyum. <nama> mengangguk pelan, tidak berani berkata apa-apa karena tahu harganya mahal. Papa mengerti perasaan <nama> dan berkata, 'Krayon itu memang bagus sekali, ya? Dengan 48 warna, <nama> bisa menggambar apa saja dengan lebih indah. Tapi harganya cukup mahal untuk anak seusia kamu.' Papa lalu mengambil celengan berbentuk kucing lucu dari tasnya. 'Kalau <nama> mau krayon itu, kita bisa mulai menabung dari sekarang. Setiap hari <nama> bisa memasukkan uang saku ke celengan ini, dan lama-lama uangnya akan terkumpul.'",
+                  "image_source": "assets/scenes/img_menggambar_part_2.jpg"
+                },
+                {
+                  "part": 2.1,
+                  "type": "interactive_question",
+                  "question": "Kalau kamu suka menggambar, warna apa yang paling kamu suka untuk menggambar?",
+                  "image_source": "assets/scenes/img_character_question.jpg"
+                },
+                {
+                  "part": 3,
+                  "type": "story",
+                  "content": "Keesokan harinya, <nama> mulai menabung dengan semangat tinggi. Setiap pagi sebelum berangkat sekolah, ia memasukkan uang saku seribu rupiah ke dalam celengan kucingnya. Ia juga mulai menggambar lebih rajin dan menjual beberapa gambar bagusnya kepada tetangga dengan harga seribu rupiah per gambar. Gambar bunga, kupu-kupu, dan pemandangan buatan <nama> ternyata disukai banyak orang. Bahkan ada tetangga yang memesan gambar khusus untuk hadiah ulang tahun anaknya. <nama> juga membantu mama mencuci piring dan menyapu halaman untuk mendapat uang tambahan. Setiap kali mendengar suara 'cling' dari koin yang masuk ke celengan, <nama> merasa semakin dekat dengan kotak krayon impiannya.",
+                  "image_source": "assets/scenes/img_menggambar_part_4.jpg"
+                },
+                {
+                  "part": 4,
+                  "type": "story",
+                  "content": "Setelah sebulan menabung dengan tekun, celengan <nama> sudah terasa berat dan penuh. Suatu sore, papa mengajak <nama> menghitung uang tabungannya. Mereka duduk di lantai dan mulai menghitung koin dan uang kertas satu per satu. Setelah menghitung dengan teliti, ternyata <nama> sudah mengumpulkan Rp95.000! Lebih dari cukup untuk membeli kotak krayon impiannya. <nama> sangat senang dan bangga. Papa memeluk <nama> dan berkata, 'Wah, <nama> hebat sekali! Sudah bisa menabung dan bahkan menghasilkan uang dari bakat menggambarmu. Sekarang kita bisa beli krayon impianmu.' Keesokan harinya, mereka pergi ke toko dan <nama> akhirnya bisa membeli kotak krayon dengan 48 warna. Saat pertama kali menggambar dengan krayon barunya, <nama> merasa seperti seorang seniman sejati—gambar-gambarnya jadi lebih hidup dan indah dengan warna-warna yang beragam.",
+                  "image_source": "assets/scenes/img_menggambar_part_5.jpg"
+                },
+                {
+                  "part": 5,
                   "type": "moral_value",
-                  "content": "Dengan menabung sedikit demi sedikit setiap hari, kita bisa membeli sesuatu yang kita inginkan tanpa meminta kepada orang lain. Menabung itu menyenangkan!"
+                  "content": "Menabung untuk sesuatu yang kita sukai dan bermanfaat membuat kita lebih menghargai hasil kerja keras. Dengan menabung, kita tidak hanya mendapatkan barang yang diinginkan, tapi juga belajar mengembangkan bakat dan menghasilkan uang dari hobi yang kita senangi!",
+                  "image_source": "assets/scenes/img_character_moral.jpg"
+                }
+              ]
+            },
+            {
+              "story_no": 3,
+              "title": "Bibit Tomat <nama>",
+              "hobby": "berkebun",
+              "image_source": "assets/scenes/img_berkebun_part_1.jpg",
+              "story": [
+                {
+                  "part": 1,
+                  "type": "story",
+                  "content": "<nama> suka sekali melihat mama berkebun di halaman belakang rumah. Setiap pagi, mama selalu menyiram tanaman-tanaman hijau yang tumbuh subur: cabai merah, bayam, kangkung, dan tomat. <nama> sering membantu mama menyiram tanaman dan merasa senang melihat daun-daun hijau yang segar. Suatu hari, saat pergi ke toko tanaman bersama mama, <nama> melihat bibit tomat kecil yang lucu sekali. Bibit itu sudah mulai tumbuh daun hijau muda dan terlihat sehat. Ada juga pot kecil berwarna cokelat yang cocok untuk menanam bibit tomat. <nama> ingin sekali punya kebun sendiri seperti mama, tapi belum punya bibit untuk ditanam. Harganya Rp25.000 untuk bibit dan pot.",
+                  "image_source": "assets/scenes/img_berkebun_part_1.jpg"
+                },
+                {
+                  "part": 2,
+                  "type": "story",
+                  "content": "Mama melihat antusiasme <nama> dan berkata, 'Kamu suka sekali ya melihat mama berkebun? Kalau <nama> mau belajar berkebun sendiri, mama akan dukung. Tapi <nama> harus beli bibit sendiri ya. Biar <nama> belajar tanggung jawab dan menghargai uang.' Mama lalu mengambil celengan berbentuk bunga dari tasnya. 'Ini celengan untuk <nama>. Setiap hari <nama> bisa menabung uang saku ke dalamnya. Kalau sudah cukup, <nama> bisa beli bibit tomat dan pot sendiri.' <nama> mengangguk semangat dan langsung memeluk mama. Ia sudah tidak sabar ingin mulai menabung dan belajar berkebun seperti mama.",
+                  "image_source": "assets/scenes/img_berkebun_part_2.jpg"
+                },
+                {
+                  "part": 2.1,
+                  "type": "interactive_question",
+                  "question": "Kalau kamu punya kebun sendiri, tanaman apa yang ingin kamu tanam?",
+                  "image_source": "assets/scenes/img_character_question.jpg"
+                },
+                {
+                  "part": 3,
+                  "type": "story",
+                  "content": "Keesokan harinya, <nama> mulai menabung dengan tekun. Setiap pagi sebelum berangkat sekolah, ia memasukkan uang saku seribu rupiah ke dalam celengan bunganya. Ia juga mulai membantu mama berkebun lebih rajin: menyiram tanaman setiap pagi dan sore, membersihkan daun-daun yang layu, dan membantu mama memetik sayuran yang sudah siap panen. Mama sangat senang melihat semangat <nama> dan memberinya uang tambahan lima ratus rupiah setiap kali <nama> membantu berkebun. <nama> juga belajar dari mama cara merawat tanaman dengan baik. Setiap kali mendengar suara 'cling' dari koin yang masuk ke celengan, <nama> membayangkan bibit tomat impiannya yang akan tumbuh subur.",
+                  "image_source": "assets/scenes/img_berkebun_part_4.jpg"
+                },
+                {
+                  "part": 4,
+                  "type": "story",
+                  "content": "Setelah dua minggu menabung dengan tekun, celengan <nama> sudah terasa berat. Suatu sore, mama mengajak <nama> menghitung uang tabungannya. Mereka duduk di teras rumah dan mulai menghitung koin dan uang kertas satu per satu. Setelah menghitung dengan teliti, ternyata <nama> sudah mengumpulkan Rp28.000! Lebih dari cukup untuk membeli bibit tomat dan pot impiannya. <nama> sangat senang dan bangga. Mama memeluk <nama> dan berkata, 'Wah, <nama> hebat sekali! Sudah bisa menabung dengan tekun dan membantu mama berkebun. Sekarang kita bisa beli bibit tomat impianmu.' Keesokan harinya, mereka pergi ke toko tanaman dan <nama> akhirnya bisa membeli bibit tomat dan pot kecil. <nama> menanam bibitnya dengan hati-hati, mengikuti petunjuk mama. Setiap hari ia merawat tanaman tomatnya dengan penuh kasih sayang. Tiga bulan kemudian, tomat-tomat merah yang manis sudah siap dipanen!",
+                  "image_source": "assets/scenes/img_berkebun_part_5.jpg"
+                },
+                {
+                  "part": 5,
+                  "type": "moral_value",
+                  "content": "Menabung untuk sesuatu yang berguna dan bermanfaat mengajarkan kita nilai kerja keras dan kesabaran. Dengan menabung, kita tidak hanya mendapatkan barang yang diinginkan, tapi juga belajar keterampilan baru yang bisa berguna seumur hidup. Hasilnya bisa kita nikmati dalam waktu lama dan bahkan bisa dibagikan kepada orang lain!",
+                  "image_source": "assets/scenes/img_character_moral.jpg"
                 }
               ]
             }
           ]
         },
         {
-          "ages": [8, 9, 10, 11, 12],
+          "ages": [
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
           "stories": [
             {
+              "story_no": 1,
               "title": "Sepeda Impian <nama>",
+              "hobby": "bersepeda",
+              "image_source": "assets/scenes/img_bersepeda_older_part_1.jpg",
               "story": [
                 {
                   "part": 1,
                   "type": "story",
-                  "content": "Di sebuah desa kecil yang sejuk dan asri, hiduplah seorang anak berusia 9 tahun bernama <nama>. <nama> sangat suka melihat teman-temannya bersepeda bersama setiap sore. Mereka tertawa dan berlomba di jalan kecil dekat sawah. Di etalase toko dekat sekolah, ada satu sepeda merah yang sangat <nama> idam-idamkan. Warnanya menyala, dengan keranjang kecil di depan dan bel sepeda yang berbunyi 'kring kring' ketika ditekan. Tapi <nama> tahu, sepeda itu mahal. Ayah dan ibu sedang berhemat, dan tidak mungkin bisa membelikan sepeda itu begitu saja."
+                  "content": "Di sebuah desa kecil yang sejuk dan asri, hiduplah seorang anak berusia 9 tahun bernama <nama>. <nama> sangat suka melihat teman-temannya bersepeda bersama setiap sore. Mereka tertawa dan berlomba di jalan kecil dekat sawah. Di etalase toko dekat sekolah, ada satu sepeda merah yang sangat <nama> idam-idamkan. Warnanya menyala, dengan keranjang kecil di depan dan bel sepeda yang berbunyi 'kring kring' ketika ditekan. Tapi <nama> tahu, sepeda itu mahal. Ayah dan ibu sedang berhemat, dan tidak mungkin bisa membelikan sepeda itu begitu saja.",
+                  "image_source": "assets/scenes/img_bersepeda_older_part_1.jpg"
                 },
                 {
                   "part": 2,
                   "type": "story",
-                  "content": "Suatu malam saat makan malam, <nama> berkata pelan, 'Bu, aku pengen punya sepeda sendiri. Biar bisa ikut teman-teman main.' Ibu tersenyum dan masuk ke kamar, lalu keluar membawa celengan ayam kecil berwarna merah. 'Kalau <nama> mau sepeda itu, kita harus mulai menabung dari sekarang. Ibu akan bantu caranya,' kata ibu sambil mengelus kepala <nama>."
+                  "content": "Suatu malam saat makan malam, <nama> berkata pelan, 'Bu, aku pengen punya sepeda sendiri. Biar bisa ikut teman-teman main.' Ibu tersenyum dan masuk ke kamar, lalu keluar membawa celengan ayam kecil berwarna merah. 'Kalau <nama> mau sepeda itu, kita harus mulai menabung dari sekarang. Ibu akan bantu caranya,' kata ibu sambil mengelus kepala <nama>.",
+                  "image_source": "assets/scenes/img_bersepeda_older_part_2.jpg"
                 },
                 {
                   "part": 2.1,
                   "type": "interactive_question",
-                  "question": "Kalau kamu jadi <nama>, apa yang akan kamu lakukan dengan uang jajananmu agar bisa cepat menabung?"
+                  "question": "Kalau kamu jadi <nama>, apa yang akan kamu lakukan dengan uang jajananmu agar bisa cepat menabung?",
+                  "image_source": "assets/scenes/img_character_question.jpg"
                 },
                 {
                   "part": 3,
                   "type": "story",
-                  "content": "Keesokan harinya, <nama> mulai menyisihkan uang jajan seribu rupiah setiap hari. Ia juga mulai membantu pekerjaan rumah. Dari mencuci piring, menyapu halaman, hingga membantu ayah memetik cabai di kebun. Kadang ayah memberinya upah kecil yang langsung dimasukkan ke celengan. Teman-temannya masih sering membeli es krim dan mainan kecil, tapi <nama> belajar menahan diri. Kadang terasa berat, terutama saat ingin sekali ikut jajan, tapi <nama> ingat tujuannya."
+                  "content": "Keesokan harinya, <nama> mulai menyisihkan uang jajan seribu rupiah setiap hari. Ia juga mulai membantu pekerjaan rumah. Dari mencuci piring, menyapu halaman, hingga membantu ayah memetik cabai di kebun. Kadang ayah memberinya upah kecil yang langsung dimasukkan ke celengan. Teman-temannya masih sering membeli es krim dan mainan kecil, tapi <nama> belajar menahan diri. Kadang terasa berat, terutama saat ingin sekali ikut jajan, tapi <nama> ingat tujuannya.",
+                  "image_source": "assets/scenes/img_bersepeda_older_part_4.jpg"
                 },
                 {
                   "part": 4,
                   "type": "story",
-                  "content": "Tiga bulan pun berlalu. Suatu hari, saat membuka celengan bersama ibu, <nama> menghitung uangnya dan terkejut. Uangnya cukup! Bahkan lebih sedikit dari harga sepeda karena toko sedang diskon. Ibu ikut senang dan memeluk <nama>. Mereka pergi ke toko, dan akhirnya sepeda merah itu dibeli dengan uang hasil usaha sendiri. Saat pertama kali mengayuh sepeda itu, <nama> merasa seperti terbang—senang, bangga, dan puas."
+                  "content": "Tiga bulan pun berlalu. Suatu hari, saat membuka celengan bersama ibu, <nama> menghitung uangnya dan terkejut. Uangnya cukup! Bahkan lebih sedikit dari harga sepeda karena toko sedang diskon. Ibu ikut senang dan memeluk <nama>. Mereka pergi ke toko, dan akhirnya sepeda merah itu dibeli dengan uang hasil usaha sendiri. Saat pertama kali mengayuh sepeda itu, <nama> merasa seperti terbang—senang, bangga, dan puas.",
+                  "image_source": "assets/scenes/img_bersepeda_older_part_5.jpg"
                 },
                 {
                   "part": 5,
                   "type": "moral_value",
-                  "content": "Menabung memang butuh waktu dan kesabaran, tapi jika kita tekun dan tidak menyerah, impian bisa tercapai. Lebih membanggakan lagi jika hasilnya dari usaha sendiri!"
+                  "content": "Menabung memang butuh waktu dan kesabaran, tapi jika kita tekun dan tidak menyerah, impian bisa tercapai. Lebih membanggakan lagi jika hasilnya dari usaha sendiri!",
+                  "image_source": "assets/scenes/img_character_moral.jpg"
+                }
+              ]
+            },
+            {
+              "story_no": 2,
+              "title": "Kamera Digital <nama>",
+              "hobby": "fotografi",
+              "image_source": "assets/scenes/img_fotografi_part_1.jpg",
+              "story": [
+                {
+                  "part": 1,
+                  "type": "story",
+                  "content": "<nama> sangat suka fotografi sejak kelas 5. Setiap pagi sebelum berangkat sekolah, ia selalu menghabiskan waktu di taman depan rumah, meminjam HP mama untuk memotret bunga-bunga yang bermekaran, kupu-kupu yang hinggap di kelopak bunga, atau pemandangan matahari terbit yang indah. Foto-foto <nama> selalu mendapat pujian dari keluarga dan teman-temannya. Tapi <nama> bermimpi punya kamera digital sendiri seperti yang dilihatnya di toko elektronik. Kamera itu bisa zoom jauh hingga 50x, hasil fotonya jernih sekali dengan resolusi tinggi, dan ada fitur-fitur canggih untuk mengatur cahaya dan fokus. Harganya Rp800.000. <nama> membayangkan betapa serunya kalau bisa memotret dengan kamera profesional seperti itu.",
+                  "image_source": "assets/scenes/img_fotografi_part_1.jpg"
+                },
+                {
+                  "part": 2,
+                  "type": "story",
+                  "content": "Suatu hari, <nama> bercerita kepada ayah tentang keinginannya sambil menunjukkan koleksi foto-foto terbaiknya di HP. Ayah melihat foto-foto <nama> dengan teliti: ada foto sunset yang dramatis, foto kupu-kupu dengan detail sayap yang jelas, dan foto bunga dengan warna yang hidup. 'Wah, fotomu bagus-bagus sekali, Nak. Kamu punya bakat fotografi yang luar biasa,' kata ayah sambil tersenyum. 'Tapi kamera digital itu harganya mahal sekali, hampir satu juta rupiah. Kalau <nama> serius mau jadi fotografer profesional, buktikan dengan menabung untuk beli kamera sendiri. Ayah akan dukung, tapi <nama> harus berusaha keras dulu.' Ayah lalu memberikan celengan berbentuk kamera dari lemari dan berkata, 'Ini untuk <nama> mulai menabung dari sekarang.'",
+                  "image_source": "assets/scenes/img_fotografi_part_2.jpg"
+                },
+                {
+                  "part": 2.1,
+                  "type": "interactive_question",
+                  "question": "Kalau kamu suka fotografi, objek apa yang paling sering kamu foto?",
+                  "image_source": "assets/scenes/img_character_question.jpg"
+                },
+                {
+                  "part": 3,
+                  "type": "story",
+                  "content": "Keesokan harinya, <nama> mulai menabung dengan serius dan tekun. Setiap pagi sebelum berangkat sekolah, ia memasukkan uang saku dua ribu rupiah ke dalam celengan kameranya. Ia juga mulai mencari cara untuk menghasilkan uang tambahan: membantu tetangga mencuci motor dengan upah lima ribu rupiah per motor, menjual foto-foto bagusnya yang sudah dicetak kepada keluarga dan teman dengan harga sepuluh ribu rupiah per foto, dan bahkan membantu toko kelontong tetangga menjaga warung saat sore hari. <nama> juga belajar dari YouTube tentang teknik fotografi: cara mengatur komposisi, memilih angle yang tepat, dan mengatur pencahayaan. Setiap kali mendengar suara 'cling' dari koin yang masuk ke celengan, <nama> membayangkan kamera digital impiannya yang akan membuat foto-fotonya semakin indah.",
+                  "image_source": "assets/scenes/img_fotografi_part_4.jpg"
+                },
+                {
+                  "part": 4,
+                  "type": "story",
+                  "content": "Setelah enam bulan menabung dan bekerja keras, celengan <nama> sudah terasa sangat berat. Suatu sore, ayah mengajak <nama> menghitung uang tabungannya. Mereka duduk di meja makan dan mulai menghitung koin dan uang kertas satu per satu dengan teliti. Setelah menghitung berulang kali, ternyata <nama> sudah mengumpulkan Rp850.000! Lebih dari cukup untuk membeli kamera digital impiannya. <nama> sangat senang dan bangga. Ayah memeluk <nama> dan berkata, 'Wah, <nama> hebat sekali! Sudah bisa menabung dengan tekun dan bahkan menghasilkan uang dari bakat fotografimu. Sekarang kita bisa beli kamera impianmu.' Keesokan harinya, mereka pergi ke toko elektronik dan <nama> akhirnya bisa membeli kamera digital dengan fitur lengkap. Foto pertama yang <nama> ambil adalah sunset di atas bukit dekat rumah. Hasilnya luar biasa indah—warna-warna yang hidup, detail yang tajam, dan komposisi yang sempurna. Semua orang terkesan dengan hasil fotonya!",
+                  "image_source": "assets/scenes/img_fotografi_part_5.jpg"
+                },
+                {
+                  "part": 5,
+                  "type": "moral_value",
+                  "content": "Menabung untuk hobi yang kita senangi dan bermanfaat akan membuat kita lebih serius menekuni hobi tersebut. Proses menabung mengajarkan kita kesabaran, kerja keras, dan menghargai hasil usaha sendiri. Dengan menabung, kita tidak hanya mendapatkan barang yang diinginkan, tapi juga mengembangkan bakat dan keterampilan yang bisa berguna seumur hidup!",
+                  "image_source": "assets/scenes/img_character_moral.jpg"
+                }
+              ]
+            },
+            {
+              "story_no": 3,
+              "title": "Set Alat Musik <nama>",
+              "hobby": "main musik",
+              "image_source": "assets/scenes/img_musik_part_1.jpg",
+              "story": [
+                {
+                  "part": 1,
+                  "type": "story",
+                  "content": "<nama> terpesona ketika melihat kakak kelasnya main gitar di acara pentas seni sekolah. Suaranya merdu sekali saat menyanyikan lagu 'Indonesia Raya' dan semua orang di aula sekolah bertepuk tangan dengan antusias. <nama> jadi ingin belajar main musik juga seperti kakak kelasnya. Suatu hari, saat jalan-jalan dengan mama ke pusat perbelanjaan, <nama> melihat toko musik yang menjual berbagai alat musik. Di etalase, ada ukulele kecil berwarna kayu natural yang sangat cantik. Ukulele itu ukurannya pas untuk anak seusia <nama>, dengan senar yang lembut dan suara yang jernih. <nama> langsung membayangkan betapa serunya kalau bisa main ukulele dan menyanyi bersama teman-temannya. Harganya Rp450.000.",
+                  "image_source": "assets/scenes/img_musik_part_1.jpg"
+                },
+                {
+                  "part": 2,
+                  "type": "story",
+                  "content": "Mama melihat antusiasme <nama> dan berkata, 'Kamu suka sekali ya melihat kakak kelas main gitar? Kalau <nama> serius mau belajar musik, mama akan dukung sepenuhnya. Tapi <nama> harus buktikan dulu dengan menabung untuk beli ukulele sendiri. Biar mama tahu kalau <nama> benar-benar serius dan tidak hanya ingin main-main saja.' Mama lalu mengambil celengan berbentuk gitar kecil dari tasnya. 'Ini celengan untuk <nama> mulai menabung dari sekarang. Setiap hari <nama> bisa memasukkan uang saku ke dalamnya. Kalau sudah cukup, <nama> bisa beli ukulele impianmu dan mama akan daftarkan <nama> les musik.' <nama> mengangguk semangat dan langsung memeluk mama.",
+                  "image_source": "assets/scenes/img_musik_part_2.jpg"
+                },
+                {
+                  "part": 2.1,
+                  "type": "interactive_question",
+                  "question": "Kalau kamu bisa main alat musik, lagu apa yang pertama kali ingin kamu mainkan?",
+                  "image_source": "assets/scenes/img_character_question.jpg"
+                },
+                {
+                  "part": 3,
+                  "type": "story",
+                  "content": "Keesokan harinya, <nama> mulai menabung dengan tekun dan semangat tinggi. Setiap pagi sebelum berangkat sekolah, ia memasukkan uang saku dua ribu rupiah ke dalam celengan gitarnya. Ia juga mulai mencari cara untuk menghasilkan uang tambahan: membantu tetangga menjaga warung saat sore hari dengan upah lima ribu rupiah per hari, membantu mama mencuci piring dan menyapu rumah dengan upah seribu rupiah per tugas, dan bahkan menjual beberapa mainan lamanya yang masih bagus kepada teman-teman. <nama> juga mulai belajar chord-chord dasar dari YouTube agar siap saat punya ukulele nanti. Setiap malam sebelum tidur, <nama> berlatih gerakan jari-jari tangan seperti sedang memetik senar ukulele. Setiap kali mendengar suara 'cling' dari koin yang masuk ke celengan, <nama> membayangkan ukulele impiannya yang akan membuat musik indah.",
+                  "image_source": "assets/scenes/img_musik_part_4.jpg"
+                },
+                {
+                  "part": 4,
+                  "type": "story",
+                  "content": "Setelah empat bulan menabung dengan tekun, celengan <nama> sudah terasa sangat berat. Suatu sore, mama mengajak <nama> menghitung uang tabungannya. Mereka duduk di sofa dan mulai menghitung koin dan uang kertas satu per satu dengan teliti. Setelah menghitung berulang kali, ternyata <nama> sudah mengumpulkan Rp480.000! Lebih dari cukup untuk membeli ukulele impiannya. <nama> sangat senang dan bangga. Mama memeluk <nama> dan berkata, 'Wah, <nama> hebat sekali! Sudah bisa menabung dengan tekun dan bekerja keras. Sekarang kita bisa beli ukulele impianmu.' Keesokan harinya, mereka pergi ke toko musik dan <nama> akhirnya bisa membeli ukulele warna kayu natural yang indah. Mama juga mendaftarkan <nama> les musik di sanggar dekat rumah. Lagu pertama yang berhasil <nama> mainkan adalah 'Twinkle Twinkle Little Star'. Mama sangat terkesan dan bahkan merekam video <nama> main ukulele untuk dikirim ke keluarga!",
+                  "image_source": "assets/scenes/img_musik_part_5.jpg"
+                },
+                {
+                  "part": 5,
+                  "type": "moral_value",
+                  "content": "Menabung untuk mengembangkan bakat dan hobi adalah investasi terbaik yang bisa kita lakukan. Proses menabung mengajarkan kita kesabaran, kerja keras, dan menghargai hasil usaha sendiri. Dengan menabung, kita tidak hanya mendapatkan barang yang diinginkan, tapi juga mengembangkan keterampilan yang bisa dinikmati seumur hidup dan bahkan bisa dibagikan kepada orang lain!",
+                  "image_source": "assets/scenes/img_character_moral.jpg"
                 }
               ]
             }
-            
           ]
         }
       ]
@@ -96,90 +293,199 @@
       "name": "membedakan_kebutuhan_dan_keinginan",
       "age_groups": [
         {
-          "ages": [5, 6, 7],
+          "ages": [
+            5,
+            6,
+            7
+          ],
           "stories": [
             {
-              "title": "Balon Atau Buku Gambar?",
-              "age_group": [5, 6, 7],
-              "theme": "membedakan_kebutuhan_dan_keinginan",
               "story_no": 1,
+              "title": "Jajan atau Buku Gambar?",
+              "hobby": "suka jajan",
+              "image_source": "assets/scenes/img_jajan_part_1.jpg",
               "story": [
                 {
                   "part": 1,
                   "type": "story",
-                  "content": "<nama> sedang berjalan-jalan di pasar malam bersama ayahnya. Lampu-lampu berkelap-kelip, suara musik terdengar riang, dan ada banyak hal menarik di sekeliling. Saat melewati sebuah stan, mata <nama> tertuju pada balon besar berwarna-warni yang melayang di udara. Bentuknya lucu, ada yang seperti hewan, ada yang seperti karakter kartun kesukaannya."
+                  "content": "<nama> sangat suka jajan. Setiap pulang sekolah, ia selalu mampir ke warung dekat rumah untuk beli permen, keripik, atau es krim. Tapi hari ini, mama memberikan uang pas-pasan. Di warung, <nama> melihat permen warna-warni yang lucu sekali, tapi ia juga ingat kalau buku gambarnya di rumah sudah habis dan besok ada pelajaran menggambar.",
+                  "image_source": "assets/scenes/img_jajan_part_1.jpg"
                 },
                 {
                   "part": 2,
                   "type": "story",
-                  "content": "Di sebelah stan balon, ada stan lain yang menjual buku gambar dan krayon warna-warni. <nama> tiba-tiba teringat bahwa buku gambarnya di rumah sudah habis dan krayonnya mulai pendek-pendek. Ia jadi bingung, uang jajannya hanya cukup untuk salah satu: balon atau buku gambar."
+                  "content": "<nama> berdiri di depan warung sambil memegang uangnya. Ia bingung harus pilih yang mana. Permen memang enak dan manis, tapi cuma bisa dimakan sekali. Buku gambar bisa dipakai berkali-kali untuk belajar.",
+                  "image_source": "assets/scenes/img_jajan_part_2.jpg"
                 },
                 {
                   "part": 2.1,
                   "type": "interactive_question",
-                  "question": "Kalau kamu jadi <nama>, kamu pilih balon atau buku gambar? Kenapa?"
+                  "question": "Kalau kamu jadi <nama>, kamu pilih permen atau buku gambar? Kenapa?",
+                  "image_source": "assets/scenes/img_character_question.jpg"
                 },
                 {
                   "part": 3,
                   "type": "story",
-                  "content": "<nama> berdiri cukup lama sambil memikirkan pilihannya. Balon memang lucu dan bisa langsung dimainkan, tapi bisa kempes besok. Buku gambar bisa dipakai lebih lama, dan <nama> bisa menggambar banyak hal yang ia suka. Akhirnya, <nama> memilih buku gambar dan krayon. Ayahnya tersenyum dan berkata, 'Wah, pilihan yang sangat bijak, Nak.'"
+                  "content": "Akhirnya <nama> memutuskan membeli buku gambar. Meskipun ia ingin sekali permen itu, <nama> ingat kata mama bahwa belajar itu penting. Ia membeli buku gambar dan pulang ke rumah.",
+                  "image_source": "assets/scenes/img_jajan_part_4.jpg"
                 },
                 {
                   "part": 4,
                   "type": "story",
-                  "content": "Sesampainya di rumah, <nama> langsung duduk di meja belajarnya. Ia menggambar rumah, matahari, dan keluarga sambil mewarnai dengan krayon barunya. Ibunya ikut melihat dan memuji, 'Gambarmu makin bagus, ya!' <nama> merasa senang karena ia bisa menggambar setiap hari dengan buku barunya."
+                  "content": "Keesokan harinya saat pelajaran menggambar, <nama> bisa ikut menggambar dengan baik karena punya buku baru. Gurunya memuji gambar <nama> dan teman-teman juga kagum. <nama> merasa senang dengan pilihannya kemarin.",
+                  "image_source": "assets/scenes/img_jajan_part_5.jpg"
                 },
                 {
                   "part": 5,
                   "type": "moral_value",
-                  "content": "Kadang, kita harus memilih antara keinginan dan kebutuhan. Memilih kebutuhan bisa membuat kita lebih senang dan tidak menyesal di kemudian hari."
+                  "content": "Kadang kita harus memilih antara yang kita inginkan dan yang kita butuhkan. Memilih kebutuhan akan membuat kita lebih senang di kemudian hari!",
+                  "image_source": "assets/scenes/img_character_moral.jpg"
                 }
               ]
-            }            
-          ]
-        },
-        {
-          "ages": [8, 9, 10, 11, 12],
-          "stories": [
+            },
             {
-              "title": "Es Krim dan Tas Sekolah Baru <nama>",
-              "age_group": [8, 9, 10, 11, 12],
-              "theme": "membedakan_kebutuhan_dan_keinginan",
-              "story_no": 1,
+              "story_no": 2,
+              "title": "Aksesoris atau Tas Sekolah?",
+              "hobby": "berbelanja aksesoris",
+              "image_source": "assets/scenes/img_aksesoris_part_1.jpg",
               "story": [
                 {
                   "part": 1,
                   "type": "story",
-                  "content": "Hari Minggu pagi, <nama> dan ibunya pergi ke toko serba ada. Cuaca sangat panas, dan di depan toko ada penjual es krim dengan aneka rasa. Mata <nama> langsung tertuju pada es krim cokelat favoritnya. Tapi sebelum ia sempat meminta, ibunya berkata, 'Kita juga harus lihat tas sekolah, ingat, tasmu sudah robek di bagian samping.'"
+                  "content": "<nama> suka sekali melihat aksesoris lucu seperti jepit rambut, gelang, dan kalung. Saat ke mall bersama mama, ia melihat jepit rambut berbentuk kupu-kupu yang sangat cantik. Tapi mama juga bilang tas sekolah <nama> sudah robek dan perlu diganti.",
+                  "image_source": "assets/scenes/img_aksesoris_part_1.jpg"
                 },
                 {
                   "part": 2,
                   "type": "story",
-                  "content": "<nama> terdiam sejenak. Ia sangat ingin membeli es krim, apalagi cuaca seperti ini rasanya sempurna untuk menikmati sesuatu yang dingin dan manis. Tapi ia juga sadar, tas sekolahnya sudah tidak nyaman dipakai. Buku-buku sering terjatuh karena bagian bawah tasnya sobek cukup besar."
+                  "content": "Mama memberikan uang kepada <nama> dan berkata, 'Kamu boleh pilih sendiri, Nak. Tapi uangnya hanya cukup untuk salah satu.' <nama> jadi bingung. Jepit rambut itu sangat cantik dan akan membuat <nama> terlihat lebih cantik, tapi tas sekolahnya memang sudah tidak bagus lagi.",
+                  "image_source": "assets/scenes/img_aksesoris_part_2.jpg"
                 },
                 {
                   "part": 2.1,
                   "type": "interactive_question",
-                  "question": "Kalau kamu jadi <nama>, mana yang akan kamu pilih: membeli es krim atau tas sekolah baru? Kenapa?"
+                  "question": "Kalau kamu jadi <nama>, kamu pilih jepit rambut atau tas sekolah? Kenapa?",
+                  "image_source": "assets/scenes/img_character_question.jpg"
                 },
                 {
                   "part": 3,
                   "type": "story",
-                  "content": "Saat berada di bagian alat tulis, ibunya mengajak <nama> duduk sebentar. Ia mengeluarkan selembar kertas kecil dan menggambar dua kolom: satu bertuliskan **KEBUTUHAN**, satu lagi **KEINGINAN**. 'Coba kita tulis barang-barang yang kamu butuh dan yang kamu inginkan,' kata Ibu sambil tersenyum. <nama> berpikir, lalu menulis 'tas sekolah' di kolom kebutuhan dan 'es krim' di kolom keinginan."
+                  "content": "<nama> memikirkan dengan hati-hati. Jepit rambut memang cantik, tapi sebenarnya <nama> sudah punya beberapa jepit rambut di rumah. Tas sekolah lebih penting karena dipakai setiap hari untuk membawa buku-buku. Akhirnya <nama> memilih tas sekolah yang baru.",
+                  "image_source": "assets/scenes/img_aksesoris_part_4.jpg"
                 },
                 {
                   "part": 4,
                   "type": "story",
-                  "content": "Ibu mengangguk pelan. 'Semua orang pasti punya keinginan, Nak. Tapi kadang kita harus memilih yang paling penting dulu.' <nama> mengerti. Ia memilih tas sekolah warna biru tua dengan banyak kantong dan resleting yang kuat. Saat membawanya ke kasir, ia merasa bangga. Di perjalanan pulang, meski tidak membeli es krim, hatinya tetap senang karena sudah membuat keputusan yang tepat."
+                  "content": "Keesokan harinya, <nama> bangga membawa tas sekolah barunya. Teman-teman memuji tas barunya yang bagus dan kuat. <nama> senang karena tidak ada lagi buku yang jatuh seperti dulu saat tasnya robek.",
+                  "image_source": "assets/scenes/img_aksesoris_part_5.jpg"
                 },
                 {
                   "part": 5,
                   "type": "moral_value",
-                  "content": "Tidak semua yang kita inginkan harus langsung dibeli. Memahami mana yang benar-benar kita butuhkan akan membantu kita membuat keputusan yang lebih bijak dan bertanggung jawab."
+                  "content": "Memilih sesuatu yang kita butuhkan lebih bijak daripada memilih sesuatu yang hanya kita inginkan. Kebutuhan akan membuat hidup kita lebih nyaman!",
+                  "image_source": "assets/scenes/img_character_moral.jpg"
                 }
               ]
             }
-            
+          ]
+        },
+        {
+          "ages": [
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "stories": [
+            {
+              "story_no": 1,
+              "title": "Gadget Baru atau Sepatu Sekolah <nama>",
+              "hobby": "beli gadget",
+              "image_source": "assets/scenes/img_gadget_part_1.jpg",
+              "story": [
+                {
+                  "part": 1,
+                  "type": "story",
+                  "content": "Hari Sabtu pagi, <nama> dan ayahnya pergi ke pusat perbelanjaan untuk membeli kebutuhan sekolah. Saat melewati toko elektronik, mata <nama> langsung tertuju pada tablet terbaru yang dipajang di etalase. Tablet itu punya layar besar, kamera yang jernih, dan bisa dipakai untuk belajar online, main game, dan nonton video. Harganya Rp2.500.000. <nama> langsung membayangkan betapa serunya kalau bisa punya tablet sendiri untuk belajar dan bermain. Tapi sebelum ia sempat meminta, ayahnya berkata, 'Kita juga harus lihat sepatu sekolah, ingat, sepatumu sudah sempit dan solnya sudah tipis sekali.'",
+                  "image_source": "assets/scenes/img_gadget_part_1.jpg"
+                },
+                {
+                  "part": 2,
+                  "type": "story",
+                  "content": "<nama> terdiam sejenak sambil memandangi tablet impiannya. Ia sangat ingin membeli tablet itu, apalagi teman-temannya sudah banyak yang punya gadget sendiri. Tapi ia juga sadar, sepatu sekolahnya sudah tidak nyaman dipakai. Setiap hari kakinya terasa sakit karena sepatu yang sempit, dan kadang-kadang air hujan masuk karena sol yang sudah tipis. <nama> bingung harus memilih yang mana: tablet yang diinginkan atau sepatu yang dibutuhkan.",
+                  "image_source": "assets/scenes/img_gadget_part_2.jpg"
+                },
+                {
+                  "part": 2.1,
+                  "type": "interactive_question",
+                  "question": "Kalau kamu jadi <nama>, mana yang akan kamu pilih: membeli tablet atau sepatu sekolah baru? Kenapa?",
+                  "image_source": "assets/scenes/img_character_question.jpg"
+                },
+                {
+                  "part": 3,
+                  "type": "story",
+                  "content": "Saat berada di bagian sepatu, ayahnya mengajak <nama> duduk sebentar di bangku. Ia mengeluarkan selembar kertas dari tas dan menggambar dua kolom: satu bertuliskan **KEBUTUHAN**, satu lagi **KEINGINAN**. 'Coba kita tulis barang-barang yang kamu butuh dan yang kamu inginkan,' kata Ayah sambil tersenyum. <nama> berpikir lama, lalu menulis 'sepatu sekolah' di kolom kebutuhan dan 'tablet' di kolom keinginan. Ayah mengangguk dan berkata, 'Bagus sekali, Nak. Kamu sudah bisa membedakan mana yang benar-benar kamu butuhkan dan mana yang hanya kamu inginkan.'",
+                  "image_source": "assets/scenes/img_gadget_part_4.jpg"
+                },
+                {
+                  "part": 4,
+                  "type": "story",
+                  "content": "Ayah menjelaskan dengan sabar, 'Semua orang pasti punya keinginan, Nak. Tapi kadang kita harus memilih yang paling penting dulu. Sepatu sekolah adalah kebutuhan karena kamu memakainya setiap hari untuk berjalan ke sekolah. Tablet adalah keinginan yang bisa ditunda.' <nama> mengerti dan memilih sepatu sekolah warna hitam yang nyaman dengan sol yang tebal dan tahan air. Saat membawanya ke kasir, ia merasa bangga karena sudah membuat keputusan yang bijak. Di perjalanan pulang, meski tidak membeli tablet, hatinya tetap senang karena sepatu barunya sangat nyaman dipakai.",
+                  "image_source": "assets/scenes/img_gadget_part_5.jpg"
+                },
+                {
+                  "part": 5,
+                  "type": "moral_value",
+                  "content": "Tidak semua yang kita inginkan harus langsung dibeli. Memahami mana yang benar-benar kita butuhkan akan membantu kita membuat keputusan yang lebih bijak dan bertanggung jawab. Kebutuhan akan membuat hidup kita lebih nyaman dan sehat!",
+                  "image_source": "assets/scenes/img_character_moral.jpg"
+                }
+              ]
+            },
+            {
+              "story_no": 2,
+              "title": "Konser Idola atau Buku Pelajaran <nama>",
+              "hobby": "ikut konser",
+              "image_source": "assets/scenes/img_konser_part_1.jpg",
+              "story": [
+                {
+                  "part": 1,
+                  "type": "story",
+                  "content": "Suatu hari, <nama> melihat poster konser idola favoritnya di dinding sekolah. Konser itu akan diadakan di stadion besar kota dan akan menghadirkan penyanyi terkenal yang sangat <nama> sukai. Tiket konsernya Rp500.000 dan sudah termasuk merchandise eksklusif. <nama> langsung membayangkan betapa serunya kalau bisa nonton konser langsung dan melihat idola favoritnya tampil di atas panggung. Tapi pada saat yang sama, <nama> juga ingat bahwa buku pelajaran matematika dan sainsnya sudah usang dan banyak halaman yang hilang. Harganya Rp300.000 untuk kedua buku tersebut.",
+                  "image_source": "assets/scenes/img_konser_part_1.jpg"
+                },
+                {
+                  "part": 2,
+                  "type": "story",
+                  "content": "<nama> bingung sekali harus memilih yang mana. Konser idola adalah kesempatan sekali seumur hidup yang tidak boleh dilewatkan. Tapi buku pelajaran juga penting untuk belajar di sekolah. <nama> membayangkan betapa senangnya kalau bisa nonton konser bersama teman-temannya, bernyanyi dan menari mengikuti lagu-lagu favorit. Tapi ia juga membayangkan betapa sulitnya belajar matematika dan sains tanpa buku yang lengkap. <nama> jadi bingung dan tidak tahu harus pilih yang mana.",
+                  "image_source": "assets/scenes/img_konser_part_2.jpg"
+                },
+                {
+                  "part": 2.1,
+                  "type": "interactive_question",
+                  "question": "Kalau kamu jadi <nama>, mana yang akan kamu pilih: tiket konser atau buku pelajaran? Kenapa?",
+                  "image_source": "assets/scenes/img_character_question.jpg"
+                },
+                {
+                  "part": 3,
+                  "type": "story",
+                  "content": "Saat makan malam, <nama> bercerita kepada mama tentang kebingungannya. Mama mendengarkan dengan sabar dan berkata, 'Mama mengerti perasaan kamu, Nak. Konser idola memang menyenangkan, tapi coba kita pikirkan mana yang lebih penting untuk masa depan kamu.' Mama lalu mengambil selembar kertas dan menggambar dua kolom: **KEBUTUHAN** dan **KEINGINAN**. 'Buku pelajaran masuk ke kebutuhan karena kamu butuh untuk belajar dan mendapat nilai bagus di sekolah. Konser masuk ke keinginan karena itu hiburan yang bisa ditunda atau diganti dengan cara lain.'",
+                  "image_source": "assets/scenes/img_konser_part_4.jpg"
+                },
+                {
+                  "part": 4,
+                  "type": "story",
+                  "content": "Mama menjelaskan dengan bijak, 'Kalau kamu pilih buku pelajaran, kamu bisa belajar dengan baik dan mendapat nilai bagus. Nilai bagus akan membuka banyak kesempatan di masa depan. Konser bisa ditonton di YouTube atau ditunda sampai kamu punya uang sendiri.' <nama> mengerti dan memilih membeli buku pelajaran matematika dan sains yang baru. Saat membawa buku-buku itu ke kasir, ia merasa bangga karena sudah membuat keputusan yang tepat untuk masa depannya. Meski tidak bisa nonton konser, <nama> tetap senang karena bisa belajar dengan nyaman menggunakan buku yang lengkap.",
+                  "image_source": "assets/scenes/img_konser_part_5.jpg"
+                },
+                {
+                  "part": 5,
+                  "type": "moral_value",
+                  "content": "Kadang kita harus memilih antara keinginan dan kebutuhan. Memilih kebutuhan akan membawa manfaat jangka panjang yang lebih besar. Pendidikan adalah investasi terbaik untuk masa depan!",
+                  "image_source": "assets/scenes/img_character_moral.jpg"
+                }
+              ]
+            }
           ]
         }
       ]
@@ -188,89 +494,117 @@
       "name": "hindari_berutang_sembarangan",
       "age_groups": [
         {
-          "ages": [5, 6, 7],
+          "ages": [
+            5,
+            6,
+            7
+          ],
           "stories": [
             {
-              "title": "Permen dari Uang Pinjaman",
+              "story_no": 1,
+              "title": "Permen dari Uang Pinjaman <nama>",
+              "hobby": "suka jajan",
+              "image_source": "assets/scenes/img_utang_part_1.jpg",
               "story": [
                 {
                   "part": 1,
                   "type": "story",
-                  "content": "<nama> sangat ingin beli permen tapi uang jajannya sudah habis."
+                  "content": "<nama> sangat ingin beli permen tapi uang jajannya sudah habis. Ia berdiri di depan warung dengan wajah sedih, memandangi permen-permen warna-warni yang tersusun rapi di etalase. Permen merah, kuning, hijau, dan biru terlihat sangat menggoda. <nama> sudah tidak punya uang saku karena habis dibelikan buku tulis pagi tadi. Ia merasa sangat ingin sekali mencicipi permen manis itu, tapi tidak punya uang untuk membelinya.",
+                  "image_source": "assets/scenes/img_utang_part_1.jpg"
                 },
                 {
                   "part": 2,
                   "type": "story",
-                  "content": "Temannya menawarkan untuk meminjamkan uang, dan <nama> menerimanya."
+                  "content": "Temannya, Budi, melihat <nama> berdiri lama di depan warung dengan wajah sedih. 'Kamu mau beli permen ya?' tanya Budi. <nama> mengangguk pelan. Budi lalu mengeluarkan uang seribu rupiah dari saku celananya dan berkata, 'Aku pinjami dulu ya. Besok kamu kembalikan.' <nama> merasa senang dan langsung menerima uang pinjaman itu. Ia membeli permen merah yang paling disukainya dan langsung memakannya dengan lahap.",
+                  "image_source": "assets/scenes/img_utang_part_2.jpg"
                 },
                 {
                   "part": 2.1,
                   "type": "interactive_question",
-                  "question": "Kalau kamu jadi <nama>, kamu akan terima uang pinjaman itu atau tidak?"
+                  "question": "Kalau kamu jadi <nama>, kamu akan terima uang pinjaman itu atau tidak?",
+                  "image_source": "assets/scenes/img_character_question.jpg"
                 },
                 {
                   "part": 3,
                   "type": "story",
-                  "content": "Keesokan harinya, <nama> lupa membayar dan temannya menjadi marah."
+                  "content": "Keesokan harinya, <nama> lupa membawa uang untuk mengembalikan pinjaman Budi. Saat bertemu di sekolah, Budi bertanya, 'Uangku mana? Katanya kemarin mau dikembalikan.' <nama> merasa malu dan berkata, 'Maaf, aku lupa bawa uang. Besok ya.' Tapi besoknya <nama> masih lupa lagi. Budi mulai kesal dan berkata, 'Kamu janji kemarin-kemarin tapi tidak pernah dibayar. Aku tidak mau pinjami lagi!' <nama> merasa sangat bersalah dan malu.",
+                  "image_source": "assets/scenes/img_utang_part_3.jpg"
                 },
                 {
                   "part": 4,
                   "type": "story",
-                  "content": "<nama> meminta maaf dan mengembalikan uangnya. Ia merasa tidak enak hati."
+                  "content": "Setelah beberapa hari, <nama> akhirnya ingat untuk membawa uang. Ia mencari Budi di sekolah dan memberikan uang seribu rupiah sambil berkata, 'Maaf Budi, aku terlambat membayar. Terima kasih sudah meminjami kemarin.' Budi menerima uangnya tapi masih sedikit kesal. <nama> merasa tidak enak hati dan berjanji tidak akan meminjam lagi kalau tidak yakin bisa mengembalikan tepat waktu.",
+                  "image_source": "assets/scenes/img_utang_part_4.jpg"
                 },
                 {
                   "part": 5,
                   "type": "moral_value",
-                  "content": "Berutang walaupun sedikit tetap harus bertanggung jawab. Lebih baik tidak meminjam jika belum yakin bisa mengembalikan."
+                  "content": "Berutang walaupun sedikit tetap harus bertanggung jawab. Lebih baik tidak meminjam jika belum yakin bisa mengembalikan tepat waktu. Memenuhi janji adalah hal yang penting untuk menjaga hubungan baik dengan teman.",
+                  "image_source": "assets/scenes/img_character_moral.jpg"
                 }
               ]
             }
           ]
         },
         {
-          "ages": [8, 9, 10, 11, 12],
+          "ages": [
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
           "stories": [
             {
+              "story_no": 1,
               "title": "Mainan Robot Pinjaman <nama>",
+              "hobby": "koleksi mainan mahal",
+              "image_source": "assets/scenes/img_robot_part_1.jpg",
               "story": [
                 {
                   "part": 1,
                   "type": "story",
-                  "content": "Saat istirahat di sekolah, <nama> melihat Rafi membawa mainan robot baru. Robot itu keren sekali—bisa berjalan, bersuara, bahkan menari. Teman-teman lain pun ikut berkumpul melihatnya. <nama> merasa iri dan ingin sekali punya robot yang sama."
+                  "content": "Saat istirahat di sekolah, <nama> melihat Rafi membawa mainan robot baru. Robot itu keren sekali—bisa berjalan, bersuara, bahkan menari. Robot itu berwarna biru metalik dengan lampu-lampu yang berkedip dan suara yang menarik. Teman-teman lain pun ikut berkumpul melihatnya. <nama> merasa iri dan ingin sekali punya robot yang sama. Ia membayangkan betapa serunya kalau bisa bermain robot di rumah.",
+                  "image_source": "assets/scenes/img_robot_part_1.jpg"
                 },
                 {
                   "part": 2,
                   "type": "story",
-                  "content": "Sepulang sekolah, <nama> menghitung uang tabungannya. Sayangnya, uang itu belum cukup untuk membeli robot seperti milik Rafi. Keesokan harinya, <nama> mengeluh pada Rafi bahwa ia ingin membeli robot itu, tapi belum punya cukup uang. Tanpa disangka, Rafi menawarkan, 'Kalau kamu mau, aku bisa pinjami dulu. Tapi minggu depan harus balikin ya!' Karena terlalu ingin punya robot, <nama> langsung mengangguk dan menerima pinjaman dari Rafi."
+                  "content": "Sepulang sekolah, <nama> menghitung uang tabungannya. Sayangnya, uang itu belum cukup untuk membeli robot seperti milik Rafi. Keesokan harinya, <nama> mengeluh pada Rafi bahwa ia ingin membeli robot itu, tapi belum punya cukup uang. Tanpa disangka, Rafi menawarkan, 'Kalau kamu mau, aku bisa pinjami dulu. Tapi minggu depan harus balikin ya!' Karena terlalu ingin punya robot, <nama> langsung mengangguk dan menerima pinjaman dari Rafi.",
+                  "image_source": "assets/scenes/img_robot_part_2.jpg"
                 },
                 {
                   "part": 2.1,
                   "type": "interactive_question",
-                  "question": "Kalau kamu jadi <nama>, apa yang sebaiknya kamu lakukan saat tidak bisa membayar pinjaman tepat waktu?"
+                  "question": "Kalau kamu jadi <nama>, apa yang sebaiknya kamu lakukan saat tidak bisa membayar pinjaman tepat waktu?",
+                  "image_source": "assets/scenes/img_character_question.jpg"
                 },
                 {
                   "part": 3,
                   "type": "story",
-                  "content": "Seminggu berlalu, tapi <nama> belum bisa mengembalikan uang Rafi. Setiap kali bertemu Rafi, <nama> jadi gugup dan menghindar. Rafi pun mulai kecewa. Ia berkata, 'Katanya minggu lalu kamu janji balikin. Jangan-jangan kamu lupa?' <nama> merasa sangat bersalah. Ia mulai kehilangan rasa nyaman bermain dengan Rafi, dan hubungan mereka jadi renggang."
+                  "content": "Seminggu berlalu, tapi <nama> belum bisa mengembalikan uang Rafi. Setiap kali bertemu Rafi, <nama> jadi gugup dan menghindar. Rafi pun mulai kecewa. Ia berkata, 'Katanya minggu lalu kamu janji balikin. Jangan-jangan kamu lupa?' <nama> merasa sangat bersalah. Ia mulai kehilangan rasa nyaman bermain dengan Rafi, dan hubungan mereka jadi renggang.",
+                  "image_source": "assets/scenes/img_robot_part_3.jpg"
                 },
                 {
                   "part": 4,
                   "type": "story",
-                  "content": "Di rumah, <nama> akhirnya bercerita pada Ibu tentang masalahnya. Ibu mendengarkan dengan sabar, lalu berkata, 'Nak, kalau kamu meminjam uang, artinya kamu sudah membuat janji. Kalau tidak bisa memenuhi janji, orang bisa jadi kecewa.' Ibu juga menambahkan, 'Kita sebaiknya hanya meminjam kalau benar-benar perlu, bukan karena keinginan sesaat.' Mendengar itu, <nama> merasa sangat menyesal. Ia lalu mulai menjual beberapa barang lamanya dan menyisihkan uang jajannya sedikit demi sedikit."
+                  "content": "Di rumah, <nama> akhirnya bercerita pada Ibu tentang masalahnya. Ibu mendengarkan dengan sabar, lalu berkata, 'Nak, kalau kamu meminjam uang, artinya kamu sudah membuat janji. Kalau tidak bisa memenuhi janji, orang bisa jadi kecewa.' Ibu juga menambahkan, 'Kita sebaiknya hanya meminjam kalau benar-benar perlu, bukan karena keinginan sesaat.' Mendengar itu, <nama> merasa sangat menyesal. Ia lalu mulai menjual beberapa barang lamanya dan menyisihkan uang jajannya sedikit demi sedikit.",
+                  "image_source": "assets/scenes/img_robot_part_4.jpg"
                 },
                 {
                   "part": 5,
                   "type": "story",
-                  "content": "Beberapa hari kemudian, <nama> berhasil mengumpulkan uang dan langsung mengembalikannya kepada Rafi. Ia meminta maaf dan menjelaskan semuanya. Rafi menerima permintaan maafnya, meskipun masih sedikit kesal. Sejak itu, <nama> belajar untuk lebih hati-hati sebelum meminjam, dan lebih memilih menabung jika menginginkan sesuatu."
+                  "content": "Beberapa hari kemudian, <nama> berhasil mengumpulkan uang dan langsung mengembalikannya kepada Rafi. Ia meminta maaf dan menjelaskan semuanya. Rafi menerima permintaan maafnya, meskipun masih sedikit kesal. Sejak itu, <nama> belajar untuk lebih hati-hati sebelum meminjam, dan lebih memilih menabung jika menginginkan sesuatu.",
+                  "image_source": "assets/scenes/img_robot_part_5.jpg"
                 },
                 {
                   "part": 6,
                   "type": "moral_value",
-                  "content": "Jangan sembarangan berutang hanya karena keinginan. Lebih baik bersabar dan menabung. Jika harus meminjam, pastikan bisa mengembalikan tepat waktu agar tidak merusak hubungan dengan teman."
+                  "content": "Jangan sembarangan berutang hanya karena keinginan. Lebih baik bersabar dan menabung. Jika harus meminjam, pastikan bisa mengembalikan tepat waktu agar tidak merusak hubungan dengan teman.",
+                  "image_source": "assets/scenes/img_character_moral.jpg"
                 }
               ]
             }
-            
           ]
         }
       ]

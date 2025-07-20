@@ -104,6 +104,19 @@ export default function UserInputForm({ onSubmit }: UserInputFormProps) {
     log('info', 'Hobby selected', { hobby, theme })
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && filteredHobbies.length > 0) {
+      e.preventDefault()
+      const topHobby = filteredHobbies[0]
+      handleHobbySelect(topHobby.hobby, topHobby.theme)
+      
+      log('info', 'Top hobby selected via Enter key', { 
+        hobby: topHobby.hobby, 
+        theme: topHobby.theme 
+      })
+    }
+  }
+
   const handleInputFocus = () => {
     setIsInputFocused(true)
     log('info', 'Input focused, showing hobby options')
@@ -212,6 +225,7 @@ export default function UserInputForm({ onSubmit }: UserInputFormProps) {
             value={formData.interests}
             onFocus={handleInputFocus}
             onBlur={handleInputBlur}
+            onKeyDown={handleKeyDown}
             onChange={(e) => {
               log('info', '📝 Interests input changed', { 
                 newValue: e.target.value,
